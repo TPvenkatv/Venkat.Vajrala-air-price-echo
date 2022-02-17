@@ -1,0 +1,6071 @@
+---
+openapi: 3.0.0
+info:
+  title: OfferResource
+  version: AirPrice_11.4.0-oas3
+servers:
+- url: https://api.pp.travelport.com/11/air/price
+- url: https://api.travelport.com/11/air/price
+security:
+- OAuth2: []
+paths:
+  /offers/buildfromcatalogproductofferings:
+    post:
+      summary: OfferResource - BuildFromCatalogProductOfferings
+      description: creating an Offer with reference to a catalogProductOfferings
+      operationId: BuildFromCatalogProductOfferings
+      parameters:
+      - name: TraceId
+        in: header
+        description: Identifier used to correlate API invocations across long-running or multi-call business flows.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: XAUTH_TRAVELPORT_ACCESSGROUP
+        in: header
+        description: Identifies the Travelport access group with which the caller is associated
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: TravelportPlusSessionID
+        in: header
+        description: Travelport Plus Session ID used to maintain an established agency session
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferQueryBuildFromCatalogProductOfferings'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferListResponse'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /offers/buildfromproducts:
+    post:
+      summary: OfferResource - BuildFromProducts
+      description: Price and create an offer from payload sent in
+      operationId: BuildFromProducts
+      parameters:
+      - name: TraceId
+        in: header
+        description: Identifier used to correlate API invocations across long-running or multi-call business flows.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: XAUTH_TRAVELPORT_ACCESSGROUP
+        in: header
+        description: Identifies the Travelport access group with which the caller is associated
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: TravelportPlusSessionID
+        in: header
+        description: Travelport Plus Session ID used to maintain an established agency session
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferQueryBuildFromProducts'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferListResponse'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /offers/buildfromcatalogofferings:
+    post:
+      summary: OfferResource - BuildFromCatalogOfferings
+      operationId: BuildFromCatalogOfferings
+      parameters:
+      - name: TraceId
+        in: header
+        description: Identifier used to correlate API invocations across long-running or multi-call business flows.
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: XAUTH_TRAVELPORT_ACCESSGROUP
+        in: header
+        description: Identifies the Travelport access group with which the caller is associated
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: TravelportPlusSessionID
+        in: header
+        description: Travelport Plus Session ID used to maintain an established agency session
+        required: false
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferQueryBuildFromCatalogOfferings'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferListResponse'
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "402":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    IdentifierRef:
+      properties:
+        value:
+          maxLength: 128
+          type: string
+        id:
+          type: string
+          description: A locally referenced ID
+        description:
+          type: string
+          description: Descriptive text used to identify the contents of a target object
+        uris:
+          type: array
+          description: 'Assigned Type: c-1100:URIs'
+          items:
+            type: string
+    TravelerIdentifierRef:
+      properties:
+        value:
+          maxLength: 128
+          type: string
+        name:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:PersonName_Simple'
+        passengerTypeCode:
+          maxLength: 5
+          minLength: 3
+          pattern: ([a-zA-Z0-9]{3,5})
+          type: string
+          description: 'Assigned Type: c-1100:PassengerTypeCode'
+        id:
+          type: string
+          description: A locally referenced ID
+        description:
+          type: string
+          description: Descriptive text used to identify the contents of a target object
+        uris:
+          type: array
+          description: 'Assigned Type: c-1100:URIs'
+          items:
+            type: string
+    TermsAndConditionsAncillary:
+      allOf:
+      - $ref: '#/components/schemas/TermsAndConditions'
+      - required:
+        - ApplicationLimit
+        properties:
+          ApplicationLimit:
+            $ref: '#/components/schemas/ApplicationLimit'
+          Refundability:
+            $ref: '#/components/schemas/RefundabilityEnum'
+    PriceBreakdownAncillary:
+      allOf:
+      - $ref: '#/components/schemas/PriceBreakdown'
+      - properties:
+          quantity:
+            type: integer
+            description: The quantity of ancillary items included in this PriceBreakdown
+            format: int32
+          Description:
+            $ref: '#/components/schemas/AncillaryDescription'
+    ProductAncillary:
+      allOf:
+      - $ref: '#/components/schemas/Product'
+      - properties:
+          Ancillary:
+            $ref: '#/components/schemas/Ancillary'
+          selectedByDefaultInd:
+            type: boolean
+    ApplicationLimit:
+      properties:
+        value:
+          $ref: '#/components/schemas/ApplicableLevelEnum'
+        start:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        end:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+    ApplicableLevelEnum:
+      type: string
+      enum:
+      - PassengerSegment
+      - Segment
+      - Itinerary
+      - Passengers
+      - PassengerOD
+      - Other
+    Ancillary:
+      required:
+      - '@type'
+      - Description
+      properties:
+        '@type':
+          type: string
+        quantity:
+          type: integer
+          description: 'Assigned Type: c-1100:NumberDoubleDigit'
+          format: int32
+        Description:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/AncillaryDescription'
+      discriminator:
+        propertyName: '@type'
+    AncillaryDescription:
+      properties:
+        value:
+          maxLength: 512
+          type: string
+        code:
+          maxLength: 10
+          pattern: ([A-Z0-9]+)?
+          type: string
+          description: 'Assigned Type: c-1100:StringUpperCaseAlphaNumericMax10'
+        subCode:
+          maxLength: 10
+          pattern: ([A-Z0-9]+)?
+          type: string
+          description: 'Assigned Type: c-1100:StringUpperCaseAlphaNumericMax10'
+        codeContext:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+      description: A description of the ancillary with two description codes
+    AncillaryOfferingID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        CatalogOfferingRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        AncillaryOfferingRef:
+          type: string
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    AncillaryOfferingIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        CatalogOfferingRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        AncillaryOfferingRef:
+          type: string
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    AncillaryOffering:
+      allOf:
+      - $ref: '#/components/schemas/AncillaryOfferingID'
+      - required:
+        - Price
+        - ProductOptions
+        properties:
+          productRefs:
+            type: array
+            description: The product references that the AncillaryOffering must be sold in conjunction with
+            items:
+              type: string
+          ProductOptions:
+            maxItems: 10
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductOptionsID'
+          Price:
+            $ref: '#/components/schemas/Price'
+          TermsAndConditions:
+            $ref: '#/components/schemas/TermsAndConditionsID'
+    AncillaryOfferingSummary:
+      allOf:
+      - $ref: '#/components/schemas/AncillaryOfferingID'
+      - required:
+        - Price
+        - ProductOptions
+        properties:
+          productRefs:
+            type: array
+            description: The product references that the AncillaryOffering must be sold in conjunction with
+            items:
+              type: string
+          ProductOptions:
+            maxItems: 10
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductOptionsID'
+          Price:
+            $ref: '#/components/schemas/Price'
+          TermsAndConditions:
+            $ref: '#/components/schemas/TermsAndConditionsID'
+    RefundabilityEnum:
+      properties:
+        value:
+          $ref: '#/components/schemas/RefundabilityEnum_Base'
+        extension:
+          maxLength: 128
+          minLength: 1
+          type: string
+    RefundabilityEnum_Base:
+      type: string
+      enum:
+      - Refundable
+      - NonRefundable
+      - Reusable
+      - Other_
+    UpsellOfferingID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+        CatalogProductOfferingRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+      discriminator:
+        propertyName: '@type'
+    UpsellOfferingIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+        CatalogProductOfferingRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+      discriminator:
+        propertyName: '@type'
+    TermsAndConditionsFullAncillary:
+      allOf:
+      - $ref: '#/components/schemas/TermsAndConditionsFull'
+      - required:
+        - ApplicationLimit
+        properties:
+          ApplicationLimit:
+            $ref: '#/components/schemas/ApplicationLimit'
+          Refundability:
+            $ref: '#/components/schemas/RefundabilityEnum'
+    CommissionEnum:
+      type: string
+      description: Type of commission
+      enum:
+      - Full
+      - Partial
+      - Non-paying
+      - No-show
+      - Adjustment
+      - Commissionable
+    CurrencySourceEnum:
+      type: string
+      description: The system requesting or returning the currency code specified in the attribute
+      enum:
+      - Supplier
+      - Charged
+      - Requested
+    DayOfWeekEnum:
+      type: string
+      description: The names of the days of the week.
+      enum:
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+    FaresFilterEnum:
+      type: string
+      description: 'REVIEW: Defines the type of fares to return (Only public fares, Only private fares, Only agency private fares, Only'
+      enum:
+      - PublicFaresOnly
+      - PrivateFaresOnly
+      - AgencyPrivateFaresOnly
+      - AirlinePrivateFaresOnly
+      - PublicAndPrivateFares
+      - NetFaresOnly
+      - AllFares
+    FareTypeEnum:
+      type: string
+      description: Defines the type of fares to return (Only public fares, Only private fares, Only agency private fares, Only
+      enum:
+      - PublicFare
+      - AgencyPrivateFare
+      - AirlinePrivateFare
+      - NetFare
+    MeasurementTypeEnum:
+      type: string
+      description: The type of measurement such as width, height, weight
+      enum:
+      - Width
+      - Height
+      - Depth
+      - Weight
+      - OverallDimension
+    NextStepMethodEnum:
+      type: string
+      description: Describes the set of potential methods that can be taken after an operation.
+      enum:
+      - GET
+      - DELETE
+      - PUT
+      - POST
+    ResultStatusEnum:
+      type: string
+      description: The status of an error or warning
+      enum:
+      - Not processed
+      - Incomplete
+      - Complete
+      - Unknown
+    TextFormatEnum:
+      type: string
+      description: Describes the format of text such as plain text or html
+      enum:
+      - PlainText
+      - HTML
+    UnitOfMeasureEnum:
+      type: string
+      description: The unit of measure in a code format. Refer to OpenTravel Code List Unit of Measure Code (UOM).
+      enum:
+      - Miles
+      - Kilometers
+      - Meters
+      - Millimeters
+      - Centimeters
+      - Yards
+      - Feet
+      - Inches
+      - Pixels
+      - Block
+      - Megabytes
+      - Gigabytes
+      - Square feet
+      - Square meters
+      - Pounds
+      - Kilograms
+      - Square inch
+      - Square yard
+      - Acre
+      - Square millimeter
+      - Square centimeter
+      - Hectare
+      - Ounce
+      - Gram
+      - Gallons
+      - Liters
+      - Kilowatts
+      - Cubic meters
+    YesNoUnknownEnum:
+      type: string
+      description: Yes , No , Unknown
+      enum:
+      - "Yes"
+      - "No"
+      - Unknown
+    ApplicationEnum:
+      type: string
+      enum:
+      - PerPerson
+      - PerRoom
+      - PerAccommodation
+      - PerHouse
+      - PerApartment
+      - PerAdult
+      - PerChild
+    FrequencyEnum:
+      type: string
+      enum:
+      - PerNight
+      - PerDay
+      - PerStay
+      - PerWeek
+      - RoundTrip
+      - OneWay
+    DocumentTypeEnum:
+      properties:
+        value:
+          $ref: '#/components/schemas/DocumentTypeEnum_Base'
+        extension:
+          maxLength: 128
+          minLength: 1
+          type: string
+    DocumentTypeEnum_Base:
+      type: string
+      enum:
+      - EMD
+      - MCO
+      - Ticket
+      - Other_
+    OfferListResponse:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        Offer:
+          maxItems: 1000
+          type: array
+          items:
+            $ref: '#/components/schemas/Offer'
+        transactionId:
+          type: string
+          description: Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId.
+        traceId:
+          type: string
+          description: Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId.
+        Result:
+          $ref: '#/components/schemas/Result'
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+        NextSteps:
+          $ref: '#/components/schemas/NextSteps'
+        ReferenceList:
+          maxItems: 5
+          type: array
+          items:
+            $ref: '#/components/schemas/ReferenceList'
+        CurrencyRateConversion:
+          maxItems: 5
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrencyRateConversion'
+        SupplementalInformation:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupplementalInformation'
+        DiagnosticResponse:
+          maxItems: 20
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+    ErrorResponse:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        transactionId:
+          type: string
+          description: Unique transaction, correlation or tracking id for a single request and reply i.e. for a single transaction. Should be a 128 bit GUID format. Also know as E2ETrackingId.
+        traceId:
+          type: string
+          description: Optional ID for internal child transactions created for processing a single request (single transaction). Should be a 128 bit GUID format. Also known as ChildTrackingId.
+        Result:
+          $ref: '#/components/schemas/Result'
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+        NextSteps:
+          $ref: '#/components/schemas/NextSteps'
+        ReferenceList:
+          maxItems: 5
+          type: array
+          items:
+            $ref: '#/components/schemas/ReferenceList'
+        CurrencyRateConversion:
+          maxItems: 5
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrencyRateConversion'
+        SupplementalInformation:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupplementalInformation'
+        DiagnosticResponse:
+          maxItems: 20
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+    CatalogOfferingID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        CatalogOfferingRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    CatalogOfferingIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        CatalogOfferingRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    BuildFromCatalogProductOfferingsRequest:
+      required:
+      - '@type'
+      - CatalogProductOfferingSelection
+      - CatalogProductOfferingsIdentifier
+      properties:
+        '@type':
+          type: string
+        CatalogProductOfferingsIdentifier:
+          $ref: '#/components/schemas/CatalogProductOfferingsIdentifier'
+        CatalogProductOfferingSelection:
+          maxItems: 16
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogProductOfferingSelection'
+        UpsellOfferingIdentifier:
+          $ref: '#/components/schemas/UpsellOfferingIdentifier'
+      discriminator:
+        propertyName: '@type'
+    BuildFromProductsRequest:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+      discriminator:
+        propertyName: '@type'
+    OfferID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        offerRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    OfferIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        offerRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    Offer:
+      allOf:
+      - $ref: '#/components/schemas/OfferID'
+      - required:
+        - Price
+        - Product
+        - TermsAndConditionsFull
+        properties:
+          parentOfferRef:
+            type: string
+            description: A reference to the Offer this offer is sold in conjunction with
+          Product:
+            maxItems: 100
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/Product'
+          Price:
+            $ref: '#/components/schemas/PriceDetail'
+          TermsAndConditionsFull:
+            maxItems: 100
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/TermsAndConditionsFullID'
+          passiveOfferInd:
+            type: boolean
+            description: If true, the Offer is passive for booking purposes.
+    OfferSummary:
+      allOf:
+      - $ref: '#/components/schemas/OfferID'
+      - required:
+        - Price
+        - Product
+        - TermsAndConditionsFull
+        properties:
+          parentOfferRef:
+            type: string
+            description: A reference to the Offer this offer is sold in conjunction with
+          Product:
+            maxItems: 100
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductID'
+          Price:
+            $ref: '#/components/schemas/Price'
+          TermsAndConditionsFull:
+            maxItems: 100
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/TermsAndConditionsFullID'
+          passiveOfferInd:
+            type: boolean
+            description: If true, the Offer is passive for booking purposes.
+    OfferUpsell:
+      allOf:
+      - $ref: '#/components/schemas/Offer'
+      - properties:
+          OfferUpsellInd:
+            type: boolean
+            description: If true, the OfferUpsell contains ancillary offerings offered in connection with the ParentOffer
+    OfferQueryBuildFromCatalogProductOfferings:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        PaymentCriteria:
+          $ref: '#/components/schemas/PaymentCriteria'
+        BuildFromCatalogProductOfferingsRequest:
+          $ref: '#/components/schemas/BuildFromCatalogProductOfferingsRequestAir'
+      discriminator:
+        propertyName: '@type'
+    BuildFromCatalogOfferingsRequest:
+      required:
+      - '@type'
+      - CatalogOfferingIdentifier
+      - CatalogOfferingsIdentifier
+      - ProductIdentifier
+      properties:
+        '@type':
+          type: string
+        CatalogOfferingsIdentifier:
+          $ref: '#/components/schemas/CatalogOfferingsIdentifier'
+        CatalogOfferingIdentifier:
+          $ref: '#/components/schemas/CatalogOfferingIdentifier'
+        ProductIdentifier:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductIdentifier'
+        AncillaryOfferingIdentifier:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/AncillaryOfferingIdentifier'
+      discriminator:
+        propertyName: '@type'
+    TermsAndConditionsID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        termsAndConditionsRef:
+          type: string
+          description: Used to reference another instance of this object in the same message.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    TermsAndConditionsIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        termsAndConditionsRef:
+          type: string
+          description: Used to reference another instance of this object in the same message.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    TermsAndConditions:
+      allOf:
+      - $ref: '#/components/schemas/TermsAndConditionsID'
+      - properties:
+          ExpiryDate:
+            type: string
+            description: The data and time range that the Offer is valid.
+            format: date-time
+          CustomerLoyalty:
+            maxItems: 5
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerLoyalty'
+    TermsAndConditionsSummary:
+      allOf:
+      - $ref: '#/components/schemas/TermsAndConditionsID'
+      - properties:
+          ExpiryDate:
+            type: string
+            description: The data and time range that the Offer is valid.
+            format: date-time
+          CustomerLoyalty:
+            maxItems: 5
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerLoyalty'
+    ProductID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        productRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    ProductIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        productRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    Product:
+      allOf:
+      - $ref: '#/components/schemas/ProductID'
+      - properties:
+          Quantity:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: The number of products dependent on context
+            format: int32
+    ProductSummary:
+      allOf:
+      - $ref: '#/components/schemas/ProductID'
+      - properties:
+          Quantity:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: The number of products dependent on context
+            format: int32
+    ProductOptionsID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+        ProductOptionsRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+      discriminator:
+        propertyName: '@type'
+    ProductOptionsIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+        ProductOptionsRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+      discriminator:
+        propertyName: '@type'
+    ProductOptions:
+      allOf:
+      - $ref: '#/components/schemas/ProductOptionsID'
+      - required:
+        - Product
+        properties:
+          sequence:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          Product:
+            maxItems: 1000
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductID'
+    ProductOptionsSummary:
+      allOf:
+      - $ref: '#/components/schemas/ProductOptionsID'
+      - required:
+        - Product
+        properties:
+          sequence:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          Product:
+            maxItems: 1000
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductID'
+    CatalogOfferingsID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    CatalogOfferingsIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    TermsAndConditionsFullID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        termsAndConditionsRef:
+          type: string
+          description: Used to reference another instance of this object in the same message.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    TermsAndConditionsFullIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        termsAndConditionsRef:
+          type: string
+          description: Used to reference another instance of this object in the same message.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    TermsAndConditionsFull:
+      allOf:
+      - $ref: '#/components/schemas/TermsAndConditionsFullID'
+      - properties:
+          ExpiryDate:
+            type: string
+            description: The data and time range that the Offer is valid.
+            format: date-time
+          CustomerLoyalty:
+            maxItems: 5
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerLoyalty'
+          TextBlock:
+            maxItems: 50
+            type: array
+            items:
+              $ref: '#/components/schemas/TextBlock'
+    TermsAndConditionsFullSummary:
+      allOf:
+      - $ref: '#/components/schemas/TermsAndConditionsFullID'
+      - properties:
+          ExpiryDate:
+            type: string
+            description: The data and time range that the Offer is valid.
+            format: date-time
+          CustomerLoyalty:
+            maxItems: 5
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerLoyalty'
+          TextBlock:
+            maxItems: 50
+            type: array
+            items:
+              $ref: '#/components/schemas/TextBlock'
+    PaymentCriteria:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        IssuerIdentificationNumber:
+          maxLength: 32
+          pattern: '[0-9]{6,11}'
+          type: string
+          description: This the BIN\/IIN
+        PaymentCardCode:
+          maxLength: 2
+          pattern: ([A-Z0-9]+)?
+          type: string
+          description: A two character code for a credit card, like MC, AX
+        DocumentNumber:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentNumber'
+        agencyAccountInd:
+          type: boolean
+          description: If true, payment will be made by agency account
+        bspInd:
+          type: boolean
+          description: If true, payment will be made by BSP
+        cashInd:
+          type: boolean
+          description: If true, payment will be made by cash
+        invoiceInd:
+          type: boolean
+          description: If true, payment will be made by invoice
+      discriminator:
+        propertyName: '@type'
+    CustomerLoyaltyCredit:
+      required:
+      - '@type'
+      - CustomerLoyalty
+      - Earned
+      - Status
+      properties:
+        '@type':
+          type: string
+        CustomerLoyalty:
+          $ref: '#/components/schemas/CustomerLoyalty'
+        Earned:
+          maxLength: 32
+          type: string
+          description: Represents the amount of award credit awarded for this offer\/offering. Award credit can be used for purchasing goods and services through a customer loyalty program
+        Status:
+          maxLength: 32
+          type: string
+          description: Represents the amount of status credit awarded for this offer\/offering. Status credit allow a customer to move up the ladder of a customer loyalty program
+      discriminator:
+        propertyName: '@type'
+    CatalogProductOfferingsID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    CatalogProductOfferingsIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    CatalogProductOfferingID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+        CatalogProductOfferingRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+      discriminator:
+        propertyName: '@type'
+    CatalogProductOfferingIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+        CatalogProductOfferingRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+      discriminator:
+        propertyName: '@type'
+    CatalogProductOfferingSelection:
+      required:
+      - '@type'
+      - CatalogProductOfferingIdentifier
+      - ProductBrandOfferingIdentifier
+      properties:
+        '@type':
+          type: string
+        CatalogProductOfferingIdentifier:
+          $ref: '#/components/schemas/CatalogProductOfferingIdentifier'
+        ProductBrandOfferingIdentifier:
+          $ref: '#/components/schemas/Identifier'
+        ProductIdentifier:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductIdentifier'
+        SegmentSequence:
+          type: array
+          items:
+            type: integer
+            format: int32
+      discriminator:
+        propertyName: '@type'
+    OrganizationCodeTypeEnum:
+      type: string
+      description: Defines the type of code given to the Organization to obtain discounts or additional benefits
+      enum:
+      - Account
+      - OrganizationLoyaltyProgram
+      - Tour
+    OrganizationIdentifier:
+      properties:
+        value:
+          maxLength: 32
+          type: string
+        supplier:
+          pattern: ([a-zA-Z0-9]{2,3})
+          type: string
+          description: 'Assigned Type: c-1100:AirlineCode'
+        organizationCodeType:
+          $ref: '#/components/schemas/OrganizationCodeTypeEnum'
+        segmentSequenceList:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+        productRef:
+          type: array
+          description: The productRef which the OrganizationIdentifier applies to
+          items:
+            type: string
+      description: The organization identifier
+    FareRuleEnum:
+      type: string
+      enum:
+      - Structured
+      - ShortText
+      - LongText
+    FareRuleCategoryEnum:
+      type: string
+      enum:
+      - AdvanceReservationsTicketing
+      - MinimumStay
+      - MaximumStay
+      - Stopovers
+      - Penalties
+      - Eligibility
+      - DayTime
+      - Seasonality
+      - FlightApplication
+      - Transfers
+      - Combinations
+      - BlackoutDates
+      - Surcharges
+      - AccompaniedTravel
+      - TravelRestrictions
+      - SalesRestrictions
+      - HIPMileageExeptions
+      - TicketEndorsements
+      - ChildrenDiscounts
+      - TourConductorDiscounts
+      - AgentDiscounts
+      - AllOtherDiscounts
+      - MiscellaneousProvisions
+      - FareByRule
+      - Groups
+      - Tours
+      - VisitAnotherCountry
+      - Deposits
+      - VoluntaryChanges
+      - VoluntaryRefunds
+      - NegotiatedFares
+      - ApplicationAndOtherConditions
+    Surcharges:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TotalSurcharges:
+          type: number
+          description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+          format: float
+        approximateInd:
+          type: boolean
+          description: if true, the surcharge amounts are approximate
+      discriminator:
+        propertyName: '@type'
+    SurchargesSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TotalSurcharges:
+          type: number
+          description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+          format: float
+        approximateInd:
+          type: boolean
+          description: if true, the surcharge amounts are approximate
+      discriminator:
+        propertyName: '@type'
+    AmenitySurcharges:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TotalSurcharges:
+          type: number
+          description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+          format: float
+        approximateInd:
+          type: boolean
+          description: if true, the surcharge amounts are approximate
+      discriminator:
+        propertyName: '@type'
+    AmenitySurchargesSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TotalSurcharges:
+          type: number
+          description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+          format: float
+        approximateInd:
+          type: boolean
+          description: if true, the surcharge amounts are approximate
+      discriminator:
+        propertyName: '@type'
+    SurchargesDetail:
+      allOf:
+      - $ref: '#/components/schemas/Surcharges'
+      - required:
+        - Surcharge
+        properties:
+          Surcharge:
+            maxItems: 100
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/Surcharge'
+    AmenitySurchargesDetail:
+      allOf:
+      - $ref: '#/components/schemas/AmenitySurcharges'
+      - required:
+        - Surcharge
+        properties:
+          Surcharge:
+            maxItems: 100
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/Surcharge'
+    Amount:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        currencySource:
+          $ref: '#/components/schemas/CurrencySourceEnum'
+        CurrencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+        Base:
+          type: number
+          description: The price prior to all applicable taxes of a product such as the rate for a room or fare for a flight.
+          format: float
+        Taxes:
+          $ref: '#/components/schemas/Taxes'
+        Fees:
+          $ref: '#/components/schemas/Fees'
+        Total:
+          type: number
+          description: Specifies the total price including base + taxes + fees
+          format: float
+        approximateInd:
+          type: boolean
+          description: True if this amount has been converted from the original amount
+      discriminator:
+        propertyName: '@type'
+    CumulativeValue:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        currencySource:
+          $ref: '#/components/schemas/CurrencySourceEnum'
+        CurrencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+        Base:
+          type: number
+          description: The price prior to all applicable taxes of a product such as the rate for a room or fare for a flight.
+          format: float
+        Taxes:
+          $ref: '#/components/schemas/Taxes'
+        Fees:
+          $ref: '#/components/schemas/Fees'
+        Total:
+          type: number
+          description: Specifies the total price including base + taxes + fees
+          format: float
+        approximateInd:
+          type: boolean
+          description: True if this amount has been converted from the original amount
+      discriminator:
+        propertyName: '@type'
+    VendorCurrencyTotal:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        currencySource:
+          $ref: '#/components/schemas/CurrencySourceEnum'
+        CurrencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+        Base:
+          type: number
+          description: The price prior to all applicable taxes of a product such as the rate for a room or fare for a flight.
+          format: float
+        Taxes:
+          $ref: '#/components/schemas/Taxes'
+        Fees:
+          $ref: '#/components/schemas/Fees'
+        Total:
+          type: number
+          description: Specifies the total price including base + taxes + fees
+          format: float
+        approximateInd:
+          type: boolean
+          description: True if this amount has been converted from the original amount
+      discriminator:
+        propertyName: '@type'
+    IntermediateStop:
+      properties:
+        value:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+        arrivalFlightDuration:
+          type: string
+        departureFlightDuration:
+          type: string
+        duration:
+          type: string
+          description: Duration stopped at this location
+        equipment:
+          pattern: ([A-Z0-9]{3})?
+          type: string
+          description: 'Assigned Type: c-1100:AirEquipCodeIATA'
+        arrivalDate:
+          pattern: (\d{4}-\d{2}-\d{2})
+          type: string
+          description: 'Assigned Type: ota2:LocalDate'
+        departureDate:
+          pattern: (\d{4}-\d{2}-\d{2})
+          type: string
+          description: 'Assigned Type: ota2:LocalDate'
+        arrivalTime:
+          pattern: (([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)((:?)[0-5]\d)?([\.,]\d+(?!:))?
+          type: string
+          description: 'Assigned Type: ota2:LocalTime'
+        departurelTime:
+          pattern: (([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)((:?)[0-5]\d)?([\.,]\d+(?!:))?
+          type: string
+          description: 'Assigned Type: ota2:LocalTime'
+        arrivalTerminal:
+          maxLength: 4096
+          pattern: ([0-9a-zA-Z]+)?
+          type: string
+          description: 'Assigned Type: c-1100:StringAlphaNumeric'
+        departureTerminal:
+          maxLength: 4096
+          pattern: ([0-9a-zA-Z]+)?
+          type: string
+          description: 'Assigned Type: c-1100:StringAlphaNumeric'
+      description: An intermediate stop location and duration
+    Tax:
+      required:
+      - codeAuthority
+      - decimalPlace
+      properties:
+        value:
+          type: number
+          format: float
+        currencyCode:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+          description: 'Assigned Type: c-1100:CurrencyCode'
+        taxCode:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        reportingAuthority:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        purpose:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        description:
+          maxLength: 4096
+          type: string
+          description: 'Assigned Type: c-1100:StringLong'
+        includedInBase:
+          $ref: '#/components/schemas/YesNoUnknownEnum'
+        codeAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+        decimalPlace:
+          minimum: 0
+          exclusiveMinimum: false
+          pattern: ([0-4])
+          type: integer
+          description: 'Assigned Type: c-1100:CurrencyMinorUnit'
+          format: int32
+        decimalAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+        exemptInd:
+          type: boolean
+          description: If true, this tax is exempt
+    GSTRegistrationNumber:
+      required:
+      - country
+      properties:
+        value:
+          maxLength: 512
+          type: string
+        telephone:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        address:
+          maxLength: 128
+          type: string
+          description: 'Assigned Type: c-1100:StringShort'
+        country:
+          pattern: '[a-zA-Z]{2}'
+          type: string
+          description: 'Assigned Type: c-1100:CountryCodeISO'
+        companyName:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        email:
+          maxLength: 128
+          type: string
+          description: 'Assigned Type: c-1100:StringShort'
+      description: The GST Registration Number for this Organization
+    Code:
+      properties:
+        value:
+          maxLength: 32
+          type: string
+        codeContext:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+      description: Any code used to specify an item, for example a type of traveler, service code, room amenity, etc.
+    CurrencyAmount:
+      properties:
+        value:
+          type: number
+          format: float
+        code:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+          description: 'Assigned Type: c-1100:CurrencyCodeISO'
+        minorUnit:
+          minimum: 0
+          exclusiveMinimum: false
+          pattern: ([0-4])
+          type: integer
+          description: 'Assigned Type: c-1100:CurrencyMinorUnit'
+          format: int32
+        currencySource:
+          $ref: '#/components/schemas/CurrencySourceEnum'
+        approximateInd:
+          type: boolean
+          description: True if the currency amount has been converted from the original amount
+      description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+    CustomerLoyalty:
+      properties:
+        value:
+          maxLength: 1000
+          minLength: 1
+          type: string
+        id:
+          type: string
+          description: Customer Loyality Id
+        priority:
+          maximum: 300
+          exclusiveMaximum: false
+          minimum: 0
+          exclusiveMinimum: false
+          type: integer
+          description: 'Assigned Type: c-1100:Priority'
+          format: int32
+        programId:
+          maxLength: 128
+          type: string
+          description: 'Assigned Type: c-1100:StringShort'
+        programName:
+          maxLength: 128
+          type: string
+          description: 'Assigned Type: c-1100:LoyaltyProgramName'
+        supplierType:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:LoyaltySupplierType'
+        supplier:
+          maxLength: 128
+          type: string
+          description: 'Assigned Type: c-1100:LoyaltySupplier'
+        tier:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        shareWithSupplier:
+          type: array
+          description: 'Assigned Type: c-1100:TinyStrings'
+          items:
+            maxLength: 32
+            type: string
+        cardHolderName:
+          maxLength: 128
+          type: string
+          description: 'Assigned Type: c-1100:StringShort'
+        validatedInd:
+          type: boolean
+          description: Customer loyalty number has been validated by the supplier
+      description: Specifies the ID for the membership program.
+    DateCreateModify:
+      properties:
+        value:
+          type: string
+          format: date-time
+        creatorID:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        lastModify:
+          type: string
+          description: Time stamp of last modification.
+          format: date-time
+        lastModifierID:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        purge:
+          type: string
+          description: Date an item will be purged from a system of record
+          format: date
+      description: Time stamp of the creation.
+    Discount:
+      required:
+      - codeAuthority
+      - currencyCode
+      - decimalPlace
+      properties:
+        value:
+          type: number
+          format: float
+        description:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        currencyCode:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+          description: 'Assigned Type: c-1100:CurrencyCode'
+        codeAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+        decimalPlace:
+          minimum: 0
+          exclusiveMinimum: false
+          pattern: ([0-4])
+          type: integer
+          description: 'Assigned Type: c-1100:CurrencyMinorUnit'
+          format: int32
+        decimalAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+      description: Corporate or Other discount
+    ErrorWarning:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        StatusCode:
+          type: integer
+          description: Http standard response code
+          format: int32
+        Message:
+          maxLength: 4096
+          type: string
+          description: The Travelport standardized error or warning message
+        NameValuePair:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+    ErrorWarningSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        StatusCode:
+          type: integer
+          description: Http standard response code
+          format: int32
+        Message:
+          maxLength: 4096
+          type: string
+          description: The Travelport standardized error or warning message
+        NameValuePair:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+    Error:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        StatusCode:
+          type: integer
+          description: Http standard response code
+          format: int32
+        Message:
+          maxLength: 4096
+          type: string
+          description: The Travelport standardized error or warning message
+        NameValuePair:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+    ErrorSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        StatusCode:
+          type: integer
+          description: Http standard response code
+          format: int32
+        Message:
+          maxLength: 4096
+          type: string
+          description: The Travelport standardized error or warning message
+        NameValuePair:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+    Warning:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        StatusCode:
+          type: integer
+          description: Http standard response code
+          format: int32
+        Message:
+          maxLength: 4096
+          type: string
+          description: The Travelport standardized error or warning message
+        NameValuePair:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+    WarningSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        StatusCode:
+          type: integer
+          description: Http standard response code
+          format: int32
+        Message:
+          maxLength: 4096
+          type: string
+          description: The Travelport standardized error or warning message
+        NameValuePair:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+    ErrorWarningDetail:
+      allOf:
+      - $ref: '#/components/schemas/ErrorWarning'
+      - required:
+        - SourceID
+        properties:
+          SourceID:
+            maxLength: 128
+            type: string
+            description: The identifier of the source system sending the error or warning
+          SourceCode:
+            maxLength: 32
+            type: string
+            description: The error or warning code returned by the source airline or host system
+          SourceDescription:
+            maxLength: 4096
+            type: string
+            description: The error or warning message as it is returned by the source airline or host system
+    ErrorDetail:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - required:
+        - SourceID
+        properties:
+          SourceID:
+            maxLength: 128
+            type: string
+            description: The identifier of the source system sending the error or warning
+          SourceCode:
+            maxLength: 32
+            type: string
+            description: The error or warning code returned by the source airline or host system
+          SourceDescription:
+            maxLength: 4096
+            type: string
+            description: The error or warning message as it is returned by the source airline or host system
+    WarningDetail:
+      allOf:
+      - $ref: '#/components/schemas/Warning'
+      - required:
+        - SourceID
+        properties:
+          SourceID:
+            maxLength: 128
+            type: string
+            description: The identifier of the source system sending the error or warning
+          SourceCode:
+            maxLength: 32
+            type: string
+            description: The error or warning code returned by the source airline or host system
+          SourceDescription:
+            maxLength: 4096
+            type: string
+            description: The error or warning message as it is returned by the source airline or host system
+    Fees:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TotalFees:
+          type: number
+          description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+          format: float
+      discriminator:
+        propertyName: '@type'
+    FeesSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TotalFees:
+          type: number
+          description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+          format: float
+      discriminator:
+        propertyName: '@type'
+    FeesDetail:
+      allOf:
+      - $ref: '#/components/schemas/Fees'
+      - properties:
+          Fee:
+            maxItems: 100
+            type: array
+            items:
+              $ref: '#/components/schemas/Fee'
+    Identifier:
+      properties:
+        value:
+          maxLength: 128
+          type: string
+        authority:
+          maxLength: 128
+          type: string
+          description: 'Assigned Type: c-1100:StringShort'
+      description: Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.
+    Measurement:
+      properties:
+        value:
+          type: number
+          format: float
+        measurementType:
+          $ref: '#/components/schemas/MeasurementTypeEnum'
+        unit:
+          $ref: '#/components/schemas/UnitOfMeasureEnum'
+      description: Used for dimensional units (width, height, depth) or weight
+    NameValuePair:
+      required:
+      - name
+      properties:
+        value:
+          maxLength: 512
+          type: string
+        id:
+          type: string
+          description: Optional internally referenced id
+        name:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+      description: Used for data stored in Name\/Value pairs
+    NextStep:
+      required:
+      - action
+      - method
+      properties:
+        value:
+          type: string
+        id:
+          type: string
+          description: Identifier for the Next Step
+        action:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        method:
+          $ref: '#/components/schemas/NextStepMethodEnum'
+        description:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+      description: A URL that describes a step that can be applied to the resource containing the next step structure.
+    NextSteps:
+      required:
+      - '@type'
+      - NextStep
+      - baseURI
+      properties:
+        '@type':
+          type: string
+        baseURI:
+          type: string
+          description: The base portion of the uri in order to shorten the uri's in the individual steps
+        id:
+          type: string
+          description: Optional internally referenced id
+        NextStep:
+          maxItems: 20
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/NextStep'
+      discriminator:
+        propertyName: '@type'
+    Result:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        status:
+          $ref: '#/components/schemas/ResultStatusEnum'
+        Error:
+          maxItems: 50
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        Warning:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/Warning'
+      discriminator:
+        propertyName: '@type'
+    Taxes:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TotalTaxes:
+          type: number
+          description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+          format: float
+      discriminator:
+        propertyName: '@type'
+    TaxesSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TotalTaxes:
+          type: number
+          description: A monetary amount, up to 4 decimal places. Decimal place needs to be included.
+          format: float
+      discriminator:
+        propertyName: '@type'
+    TaxesDetail:
+      allOf:
+      - $ref: '#/components/schemas/Taxes'
+      - properties:
+          Tax:
+            maxItems: 100
+            type: array
+            items:
+              $ref: '#/components/schemas/Tax'
+          TaxPercent:
+            $ref: '#/components/schemas/TaxPercent'
+    TextBlock:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        title:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        id:
+          type: string
+          description: Internally referenced id
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    TextBlockSummary:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        title:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        id:
+          type: string
+          description: Internally referenced id
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    BrandText:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internally referenced id
+        target:
+          $ref: '#/components/schemas/BrandTargetEnum'
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    BrandTextSummary:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internally referenced id
+        target:
+          $ref: '#/components/schemas/BrandTargetEnum'
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    RateDescription:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        title:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        id:
+          type: string
+          description: Internally referenced id
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    RateDescriptionSummary:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        title:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        id:
+          type: string
+          description: Internally referenced id
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    BrandFeatureText:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        title:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        id:
+          type: string
+          description: Internally referenced id
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    BrandFeatureTextSummary:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        title:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        id:
+          type: string
+          description: Internally referenced id
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    TextBlockDetail:
+      allOf:
+      - $ref: '#/components/schemas/TextBlock'
+      - required:
+        - DateCreateModify
+        properties:
+          sequence:
+            type: integer
+            description: The order of the text block, if there are more than one block.
+            format: int32
+          description:
+            maxLength: 1024
+            type: string
+            description: 'Assigned Type: c-1100:Description'
+          Image:
+            $ref: '#/components/schemas/Image'
+          URL:
+            type: string
+            description: A URL for this block
+          DateCreateModify:
+            $ref: '#/components/schemas/DateCreateModify'
+    BrandTextDetail:
+      allOf:
+      - $ref: '#/components/schemas/BrandText'
+      - required:
+        - DateCreateModify
+        properties:
+          sequence:
+            type: integer
+            description: The order of the text block, if there are more than one block.
+            format: int32
+          description:
+            maxLength: 1024
+            type: string
+            description: 'Assigned Type: c-1100:Description'
+          Image:
+            $ref: '#/components/schemas/Image'
+          URL:
+            type: string
+            description: A URL for this block
+          DateCreateModify:
+            $ref: '#/components/schemas/DateCreateModify'
+    RateDescriptionDetail:
+      allOf:
+      - $ref: '#/components/schemas/RateDescription'
+      - required:
+        - DateCreateModify
+        properties:
+          sequence:
+            type: integer
+            description: The order of the text block, if there are more than one block.
+            format: int32
+          description:
+            maxLength: 1024
+            type: string
+            description: 'Assigned Type: c-1100:Description'
+          Image:
+            $ref: '#/components/schemas/Image'
+          URL:
+            type: string
+            description: A URL for this block
+          DateCreateModify:
+            $ref: '#/components/schemas/DateCreateModify'
+    BrandFeatureTextDetail:
+      allOf:
+      - $ref: '#/components/schemas/BrandFeatureText'
+      - required:
+        - DateCreateModify
+        properties:
+          sequence:
+            type: integer
+            description: The order of the text block, if there are more than one block.
+            format: int32
+          description:
+            maxLength: 1024
+            type: string
+            description: 'Assigned Type: c-1100:Description'
+          Image:
+            $ref: '#/components/schemas/Image'
+          URL:
+            type: string
+            description: A URL for this block
+          DateCreateModify:
+            $ref: '#/components/schemas/DateCreateModify'
+    TextFormatted:
+      properties:
+        value:
+          maxLength: 4096
+          type: string
+        language:
+          type: string
+          description: The language in which the text is provided.
+        textFormat:
+          $ref: '#/components/schemas/TextFormatEnum'
+      description: Provides text and indicates whether it is formatted or not.
+    Price:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internally referenced id
+        CurrencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+        Base:
+          type: number
+          description: The total amount not including taxes and\/or fees
+          format: float
+        TotalTaxes:
+          type: number
+          description: The total of the taxes included in the total price
+          format: float
+        TotalFees:
+          type: number
+          description: The total of the fees included in the total price
+          format: float
+        TotalPrice:
+          type: number
+          description: The total price of the product in the currency indicated
+          format: float
+        VendorCurrencyTotal:
+          $ref: '#/components/schemas/VendorCurrencyTotal'
+      discriminator:
+        propertyName: '@type'
+    PriceSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internally referenced id
+        CurrencyCode:
+          $ref: '#/components/schemas/CurrencyCode'
+        Base:
+          type: number
+          description: The total amount not including taxes and\/or fees
+          format: float
+        TotalTaxes:
+          type: number
+          description: The total of the taxes included in the total price
+          format: float
+        TotalFees:
+          type: number
+          description: The total of the fees included in the total price
+          format: float
+        TotalPrice:
+          type: number
+          description: The total price of the product in the currency indicated
+          format: float
+        VendorCurrencyTotal:
+          $ref: '#/components/schemas/VendorCurrencyTotal'
+      discriminator:
+        propertyName: '@type'
+    PriceDetail:
+      allOf:
+      - $ref: '#/components/schemas/Price'
+      - properties:
+          PriceBreakdown:
+            maxItems: 50
+            type: array
+            items:
+              $ref: '#/components/schemas/PriceBreakdown'
+    FiledAmount:
+      required:
+      - codeAuthority
+      - decimalPlace
+      properties:
+        value:
+          type: number
+          format: float
+        currencyCode:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+          description: 'Assigned Type: c-1100:CurrencyCode'
+        codeAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+        decimalPlace:
+          minimum: 0
+          exclusiveMinimum: false
+          pattern: ([0-4])
+          type: integer
+          description: 'Assigned Type: c-1100:CurrencyMinorUnit'
+          format: int32
+        decimalAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+      description: The base amount of a ticketPrice that is filed in local currency
+    Surcharge:
+      required:
+      - codeAuthority
+      - decimalPlace
+      properties:
+        value:
+          type: number
+          format: float
+        currencyCode:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+          description: 'Assigned Type: c-1100:CurrencyCode'
+        surchargeCode:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        reportingAuthority:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        purpose:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        description:
+          maxLength: 4096
+          type: string
+          description: 'Assigned Type: c-1100:StringLong'
+        surchargeApplication:
+          $ref: '#/components/schemas/ApplicationEnum'
+        surchargeFrequency:
+          $ref: '#/components/schemas/FrequencyEnum'
+        codeAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+        decimalPlace:
+          minimum: 0
+          exclusiveMinimum: false
+          pattern: ([0-4])
+          type: integer
+          description: 'Assigned Type: c-1100:CurrencyMinorUnit'
+          format: int32
+        decimalAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+      description: The fee amount with feecode and reporting informtion
+    CurrencyRateConversion:
+      required:
+      - '@type'
+      - ConversionRate
+      - SourceCurrency
+      - TargetCurrency
+      properties:
+        '@type':
+          type: string
+        SourceCurrency:
+          $ref: '#/components/schemas/CurrencyCode'
+        TargetCurrency:
+          $ref: '#/components/schemas/CurrencyCode'
+        ConversionRate:
+          $ref: '#/components/schemas/ConversionRate'
+      discriminator:
+        propertyName: '@type'
+    CurrencyCode:
+      required:
+      - codeAuthority
+      - decimalPlace
+      properties:
+        value:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+        codeAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+        decimalPlace:
+          minimum: 0
+          exclusiveMinimum: false
+          pattern: ([0-4])
+          type: integer
+          description: 'Assigned Type: c-1100:CurrencyMinorUnit'
+          format: int32
+        decimalAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+      description: The currency code to which any conversion rates will apply
+    ConversionRate:
+      properties:
+        value:
+          type: number
+          format: float
+        rateAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:CodeContext'
+        rateAsOf:
+          type: string
+          description: 'Assigned Type: c-1100:DateTime'
+          format: date-time
+      description: A conversion metric from standard to another with the contextual authority such as IATA, OAG, ISO, etc.
+    PromotionalCode:
+      required:
+      - supplierCode
+      properties:
+        value:
+          maxLength: 32
+          type: string
+        supplierCode:
+          maxLength: 5
+          minLength: 2
+          pattern: ([a-zA-Z0-9]{2,5})
+          type: string
+          description: 'Assigned Type: c-1100:SupplierCode'
+    Fee:
+      required:
+      - '@type'
+      - FeeAmountOrPercent
+      properties:
+        '@type':
+          type: string
+        feeCode:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        reportingAuthority:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        purpose:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        description:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        feeApplication:
+          $ref: '#/components/schemas/ApplicationEnum'
+        feeFrequency:
+          $ref: '#/components/schemas/FrequencyEnum'
+        FeeAmountOrPercent:
+          $ref: '#/components/schemas/FeeAmountOrPercent'
+        Tax:
+          maxItems: 5
+          type: array
+          items:
+            $ref: '#/components/schemas/Tax'
+        includedinBaseInd:
+          type: boolean
+          description: If the fee is included in the Base Price
+      discriminator:
+        propertyName: '@type'
+    DocumentNumber:
+      properties:
+        value:
+          maxLength: 4096
+          pattern: ([0-9]+)?
+          type: string
+        documentIssuer:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        documentType:
+          $ref: '#/components/schemas/DocumentTypeEnum_Base'
+        documentTypeExtension:
+          maxLength: 128
+          minLength: 1
+          type: string
+    TaxPercent:
+      properties:
+        value:
+          minimum: 0
+          exclusiveMinimum: false
+          type: number
+          format: float
+        taxCode:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        reportingAuthority:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        purpose:
+          maxLength: 512
+          type: string
+          description: 'Assigned Type: c-1100:String'
+        description:
+          maxLength: 4096
+          type: string
+          description: 'Assigned Type: c-1100:StringLong'
+        includedInBase:
+          $ref: '#/components/schemas/YesNoUnknownEnum'
+    DepartureArrival:
+      required:
+      - '@type'
+      - date
+      - location
+      - time
+      properties:
+        '@type':
+          type: string
+        location:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: 'Assigned Type: c-1100:LocationCodeIATA'
+        date:
+          type: string
+          description: Local date of for arrival or departure
+          format: date
+        time:
+          type: string
+          description: Local time Date of for arrival or departure
+      discriminator:
+        propertyName: '@type'
+    DepartureArrivalSummary:
+      required:
+      - '@type'
+      - date
+      - location
+      - time
+      properties:
+        '@type':
+          type: string
+        location:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: 'Assigned Type: c-1100:LocationCodeIATA'
+        date:
+          type: string
+          description: Local date of for arrival or departure
+          format: date
+        time:
+          type: string
+          description: Local time Date of for arrival or departure
+      discriminator:
+        propertyName: '@type'
+    Arrival:
+      required:
+      - '@type'
+      - date
+      - location
+      - time
+      properties:
+        '@type':
+          type: string
+        location:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: 'Assigned Type: c-1100:LocationCodeIATA'
+        date:
+          type: string
+          description: Local date of for arrival or departure
+          format: date
+        time:
+          type: string
+          description: Local time Date of for arrival or departure
+      discriminator:
+        propertyName: '@type'
+    ArrivalSummary:
+      required:
+      - '@type'
+      - date
+      - location
+      - time
+      properties:
+        '@type':
+          type: string
+        location:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: 'Assigned Type: c-1100:LocationCodeIATA'
+        date:
+          type: string
+          description: Local date of for arrival or departure
+          format: date
+        time:
+          type: string
+          description: Local time Date of for arrival or departure
+      discriminator:
+        propertyName: '@type'
+    Departure:
+      required:
+      - '@type'
+      - date
+      - location
+      - time
+      properties:
+        '@type':
+          type: string
+        location:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: 'Assigned Type: c-1100:LocationCodeIATA'
+        date:
+          type: string
+          description: Local date of for arrival or departure
+          format: date
+        time:
+          type: string
+          description: Local time Date of for arrival or departure
+      discriminator:
+        propertyName: '@type'
+    DepartureSummary:
+      required:
+      - '@type'
+      - date
+      - location
+      - time
+      properties:
+        '@type':
+          type: string
+        location:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: 'Assigned Type: c-1100:LocationCodeIATA'
+        date:
+          type: string
+          description: Local date of for arrival or departure
+          format: date
+        time:
+          type: string
+          description: Local time Date of for arrival or departure
+      discriminator:
+        propertyName: '@type'
+    DepartureArrivalDetail:
+      allOf:
+      - $ref: '#/components/schemas/DepartureArrival'
+      - properties:
+          terminal:
+            maxLength: 4096
+            pattern: ([0-9a-zA-Z]+)?
+            type: string
+            description: 'Assigned Type: c-1100:StringAlphaNumeric'
+          country:
+            pattern: '[a-zA-Z]{2}'
+            type: string
+            description: 'Assigned Type: c-1100:CountryCodeISO'
+    ArrivalDetail:
+      allOf:
+      - $ref: '#/components/schemas/Arrival'
+      - properties:
+          terminal:
+            maxLength: 4096
+            pattern: ([0-9a-zA-Z]+)?
+            type: string
+            description: 'Assigned Type: c-1100:StringAlphaNumeric'
+          country:
+            pattern: '[a-zA-Z]{2}'
+            type: string
+            description: 'Assigned Type: c-1100:CountryCodeISO'
+    DepartureDetail:
+      allOf:
+      - $ref: '#/components/schemas/Departure'
+      - properties:
+          terminal:
+            maxLength: 4096
+            pattern: ([0-9a-zA-Z]+)?
+            type: string
+            description: 'Assigned Type: c-1100:StringAlphaNumeric'
+          country:
+            pattern: '[a-zA-Z]{2}'
+            type: string
+            description: 'Assigned Type: c-1100:CountryCodeISO'
+    ConnectionPreferences:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        legSequence:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+        maxConnectionDuration:
+          type: string
+          description: The maximum acceptable duration of the connection
+        maxOvernightDuration:
+          type: string
+          description: The maximum acceptable overnight duration of the connection
+        ConnectionPoint:
+          maxItems: 5
+          type: array
+          items:
+            maxLength: 3
+            minLength: 3
+            pattern: ([a-zA-Z]{3})
+            type: string
+      discriminator:
+        propertyName: '@type'
+    Image:
+      properties:
+        value:
+          type: string
+        dimensionCategory:
+          maxLength: 1
+          type: string
+          description: 'Assigned Type: c-1100:StringCharacterOne'
+        width:
+          type: integer
+          description: Width of image
+          format: int32
+        height:
+          type: integer
+          description: Height
+          format: int32
+        caption:
+          maxLength: 128
+          type: string
+          description: 'Assigned Type: c-1100:StringShort'
+        pictureCategory:
+          type: integer
+          description: 'Assigned Type: c-1100:NumberDoubleDigit'
+          format: int32
+      description: URL of the image
+    FareQualifierEnum:
+      properties:
+        value:
+          $ref: '#/components/schemas/FareQualifierEnum_Base'
+        extension:
+          maxLength: 128
+          minLength: 1
+          type: string
+    FareQualifierEnum_Base:
+      type: string
+      enum:
+      - Tour
+      - Consolidator
+      - VistFriendsAndRelatives
+      - Marine
+      - Other_
+    FareSelection:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        fareType:
+          $ref: '#/components/schemas/FaresFilterEnum'
+        RefundOptions:
+          $ref: '#/components/schemas/RefundOptions'
+        FareQualifier:
+          $ref: '#/components/schemas/FareQualifierEnum'
+      discriminator:
+        propertyName: '@type'
+    FareSelectionSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        fareType:
+          $ref: '#/components/schemas/FaresFilterEnum'
+        RefundOptions:
+          $ref: '#/components/schemas/RefundOptions'
+        FareQualifier:
+          $ref: '#/components/schemas/FareQualifierEnum'
+      discriminator:
+        propertyName: '@type'
+    FareSelectionDetail:
+      allOf:
+      - $ref: '#/components/schemas/FareSelection'
+      - required:
+        - validatingCarrier
+        properties:
+          validatingCarrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          prohibitMinStayFaresInd:
+            type: boolean
+            description: If present and true, fares with minimum stays will not be returned
+          prohibitMaxStayFaresInd:
+            type: boolean
+            description: If present and true, fares with maximum stays will not be returned
+          refundableOnlyInd:
+            type: boolean
+            description: If present and true, only refundable fares will be returned
+          prohibitAdvancePurchaseFaresInd:
+            type: boolean
+            description: If present and true, fares with advance purchase requirements will not be returned
+          prohibitUnbundledFaresInd:
+            type: boolean
+          prohibitRefundableFaresInd:
+            type: boolean
+            description: Allows user to prohibit refundable fares from being offered
+    ClassOfServicePreferenceTypeEnum:
+      type: string
+      enum:
+      - Preferred
+      - Permitted
+      - Prohibited
+    ClassOfServicePreference:
+      required:
+      - '@type'
+      - ClassesOfService
+      properties:
+        '@type':
+          type: string
+        legSequence:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+        ClassesOfService:
+          type: array
+          description: Allows user to specify which class(s) of service they want returned in CatalogOfferings
+          items:
+            maxLength: 2
+            minLength: 1
+            pattern: ([a-zA-Z0-9]{1,2})
+            type: string
+        PreferenceType:
+          $ref: '#/components/schemas/ClassOfServicePreferenceTypeEnum'
+      discriminator:
+        propertyName: '@type'
+    ProductInclusionPreference:
+      required:
+      - '@type'
+      - Classification
+      properties:
+        '@type':
+          type: string
+        legSequence:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+        Classification:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandClassificationEnum'
+        AdditionalClassification:
+          maxItems: 10
+          type: array
+          items:
+            maxLength: 512
+            type: string
+        exactMatchInd:
+          type: boolean
+          description: if true, the attributes requested must be included in the offerings
+      discriminator:
+        propertyName: '@type'
+    RefundTypeEnum:
+      type: string
+      enum:
+      - Refundable
+      - NonRefundable
+      - PartialRefund
+    RefundOptions:
+      required:
+      - '@type'
+      - refundTypes
+      properties:
+        '@type':
+          type: string
+        refundTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefundTypeEnum'
+        RefundPenaltyRange:
+          $ref: '#/components/schemas/RefundPenaltyRange'
+      discriminator:
+        propertyName: '@type'
+    RefundPenaltyRange:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        Minimum:
+          $ref: '#/components/schemas/Minimum'
+        Maximum:
+          $ref: '#/components/schemas/Maximum'
+      discriminator:
+        propertyName: '@type'
+    SpecificFlightCriteria:
+      required:
+      - '@type'
+      - carrier
+      - departureDate
+      - flightNumber
+      - from
+      - segmentSequence
+      - to
+      properties:
+        '@type':
+          type: string
+        carrier:
+          pattern: ([a-zA-Z0-9]{2,3})
+          type: string
+          description: 'Assigned Type: c-1100:AirlineCode'
+        flightNumber:
+          pattern: '[0-9]{1,4}[A-Z]?|OPEN|ARNK'
+          type: string
+          description: 'Assigned Type: c-1100:FlightNumber'
+        departureDate:
+          type: string
+          description: date of departure
+          format: date
+        departureTime:
+          pattern: (([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)((:?)[0-5]\d)?([\.,]\d+(?!:))?
+          type: string
+          description: 'Assigned Type: ota2:LocalTime'
+        arrivalDate:
+          type: string
+          description: Arrival date
+          format: date
+        arrivalTime:
+          pattern: (([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)((:?)[0-5]\d)?([\.,]\d+(?!:))?
+          type: string
+          description: 'Assigned Type: ota2:LocalTime'
+        from:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: 'Assigned Type: c-1100:AirportCodeIATA'
+        to:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: 'Assigned Type: c-1100:AirportCodeIATA'
+        cabin:
+          $ref: '#/components/schemas/CabinAirEnum'
+        classOfService:
+          maxLength: 2
+          minLength: 1
+          pattern: ([a-zA-Z0-9]{1,2})
+          type: string
+          description: 'Assigned Type: c-1100:ClassOfService'
+        brandTier:
+          type: integer
+          description: 'Assigned Type: c-1100:NumberSingleDigit'
+          format: int32
+        segmentSequence:
+          type: integer
+          description: 'Assigned Type: c-1100:SegmentSequence'
+          format: int32
+        AvailabilitySourceCode:
+          $ref: '#/components/schemas/AvailabilitySourceCodeENUM'
+        boundFlightsInd:
+          type: boolean
+          description: if true indicates that the flight availability was polled (availability check) using connecting segments. If false, flights were polled as point to point segments.
+      discriminator:
+        propertyName: '@type'
+    PricingModifiersAirChange:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        currencyCode:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+          description: 'Assigned Type: c-1100:CurrencyCodeISO'
+        FareSelection:
+          $ref: '#/components/schemas/FareSelection'
+        OrganizationInformation:
+          $ref: '#/components/schemas/OrganizationInformation'
+        WaiverCode:
+          $ref: '#/components/schemas/WaiverCode'
+        TaxExemption:
+          $ref: '#/components/schemas/TaxExemption'
+        PromotionalCode:
+          $ref: '#/components/schemas/PromotionalCode'
+        SellCity:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: Overrides the sell city of the requestor.
+        TicketCity:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: Overrides the ticket city of the requestor.
+        keepToBrandInd:
+          type: boolean
+          description: If true, the offerings returned will be of the same brand as the original Offer
+      discriminator:
+        propertyName: '@type'
+    CustomResponseModifiersAir:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        BrandAttributeInclusion:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandAttributeInclusion'
+        excludePenaltiesInd:
+          type: boolean
+          description: If true, Penalties will be excluded from the response
+        excludeBaggageFeesInd:
+          type: boolean
+          description: If true, Baggage Fees will be inhibited from the response
+        includeFareCalculationInd:
+          type: boolean
+          description: if true, the fare calculation string will be returned in the response
+        excludeSurchargesInd:
+          type: boolean
+          description: If true, the surcharge breakdown will be excluded from Price_Detail
+      discriminator:
+        propertyName: '@type'
+    PriceBreakdownAir:
+      allOf:
+      - $ref: '#/components/schemas/PriceBreakdown'
+      - properties:
+          quantity:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberDoubleDigit'
+            format: int32
+          requestedPassengerType:
+            maxLength: 5
+            minLength: 3
+            pattern: ([a-zA-Z0-9]{3,5})
+            type: string
+            description: 'Assigned Type: c-1100:PassengerTypeCode'
+          FiledAmount:
+            $ref: '#/components/schemas/FiledAmount'
+          Discount:
+            $ref: '#/components/schemas/Discount'
+          TravelerIdentifierRef:
+            $ref: '#/components/schemas/TravelerIdentifierRef'
+          NetBaseAmount:
+            $ref: '#/components/schemas/FiledAmount'
+          FareCalculation:
+            maxLength: 512
+            type: string
+            description: The fare calculation string showing how the base fare is calculated
+          Surcharges:
+            $ref: '#/components/schemas/Surcharges'
+    BuildFromCatalogProductOfferingsRequestAir:
+      allOf:
+      - $ref: '#/components/schemas/BuildFromCatalogProductOfferingsRequest'
+      - properties:
+          PricingModifiersAir:
+            $ref: '#/components/schemas/PricingModifiersAir'
+          CabinPreference:
+            $ref: '#/components/schemas/CabinPreference'
+          FareRuleCategory:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/FareRuleCategoryEnum'
+          FareRuleType:
+            $ref: '#/components/schemas/FareRuleEnum'
+          CustomResponseModifiersAir:
+            $ref: '#/components/schemas/CustomResponseModifiersAir'
+          lowFareFinderInd:
+            type: boolean
+            description: If true, the price service will return the lowest fare available for the itinerary requested
+          reCheckInventoryInd:
+            type: boolean
+            description: If true, the price service will recheck inventory at the time of pricing the Offer
+          inhibitBrandContentInd:
+            type: boolean
+            description: If true, Brand content will not be returned with the Offer
+    BuildFromCatalogOfferingsRequestAir:
+      allOf:
+      - $ref: '#/components/schemas/BuildFromCatalogOfferingsRequest'
+      - properties:
+          PricingModifiersAir:
+            $ref: '#/components/schemas/PricingModifiersAir'
+          SegmentSequence:
+            type: array
+            description: The segmentSequence within the product the action is being requested for. Used when multiple flights exist within a product. Only one product may be selected with this option.
+            items:
+              type: integer
+              format: int32
+          CustomResponseModifiersAir:
+            $ref: '#/components/schemas/CustomResponseModifiersAir'
+    BuildFromProductsRequestAir:
+      allOf:
+      - $ref: '#/components/schemas/BuildFromProductsRequest'
+      - required:
+        - PassengerCriteria
+        - PricingModifiersAir
+        - ProductCriteriaAir
+        properties:
+          PricingModifiersAir:
+            $ref: '#/components/schemas/PricingModifiersAir'
+          PassengerCriteria:
+            maxItems: 10
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/PassengerCriteria'
+          ProductCriteriaAir:
+            maxItems: 10
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductCriteriaAir'
+          CustomResponseModifiersAir:
+            $ref: '#/components/schemas/CustomResponseModifiersAir'
+    Change:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        ProductRefs:
+          type: array
+          description: The productRefs this change or cancel applies to
+          items:
+            type: string
+        SegmentSequence:
+          type: array
+          description: The SegmentSequence of the product this change or cancel applies to
+          items:
+            type: integer
+            format: int32
+      discriminator:
+        propertyName: '@type'
+    Cancel:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        ProductRefs:
+          type: array
+          description: The productRefs this change or cancel applies to
+          items:
+            type: string
+        SegmentSequence:
+          type: array
+          description: The SegmentSequence of the product this change or cancel applies to
+          items:
+            type: integer
+            format: int32
+      discriminator:
+        propertyName: '@type'
+    ChangeIndeterminate:
+      allOf:
+      - $ref: '#/components/schemas/Change'
+      - properties:
+          IndeterminateInd:
+            type: boolean
+            description: structured fare rules could not be determined for this category
+    CancelIndeterminate:
+      allOf:
+      - $ref: '#/components/schemas/Cancel'
+      - properties:
+          IndeterminateInd:
+            type: boolean
+            description: structured fare rules could not be determined for this category
+    ChangeNotPermitted:
+      allOf:
+      - $ref: '#/components/schemas/Change'
+      - properties:
+          NotPermittedInd:
+            type: boolean
+            description: Changes are not permitted
+    CancelNotPermitted:
+      allOf:
+      - $ref: '#/components/schemas/Cancel'
+      - properties:
+          NotPermittedInd:
+            type: boolean
+            description: Changes are not permitted
+    ChangePermitted:
+      allOf:
+      - $ref: '#/components/schemas/Change'
+      - required:
+        - penaltyTypes
+        properties:
+          penaltyTypes:
+            type: array
+            items:
+              $ref: '#/components/schemas/PenaltyTypeEnum'
+          PenaltyAppliesTo:
+            $ref: '#/components/schemas/PenaltyAppliesToEnum'
+          Penalty:
+            maxItems: 2
+            type: array
+            items:
+              $ref: '#/components/schemas/Penalty'
+          higherPenatltyAppliesInd:
+            type: boolean
+            description: If true, when an amount and a percent are specified in the Penalty then the higher of these apply
+    CancelPermitted:
+      allOf:
+      - $ref: '#/components/schemas/Cancel'
+      - required:
+        - penaltyTypes
+        properties:
+          penaltyTypes:
+            type: array
+            items:
+              $ref: '#/components/schemas/PenaltyTypeEnum'
+          PenaltyAppliesTo:
+            $ref: '#/components/schemas/PenaltyAppliesToEnum'
+          Penalty:
+            maxItems: 2
+            type: array
+            items:
+              $ref: '#/components/schemas/Penalty'
+          higherPenatltyAppliesInd:
+            type: boolean
+            description: If true, when an amount and a percent are specified in the Penalty then the higher of these apply
+    FlightProduct:
+      required:
+      - '@type'
+      - segmentSequence
+      properties:
+        '@type':
+          type: string
+        segmentSequence:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+        classOfService:
+          maxLength: 2
+          minLength: 1
+          pattern: ([a-zA-Z0-9]{1,2})
+          type: string
+          description: 'Assigned Type: c-1100:ClassOfService'
+        cabin:
+          $ref: '#/components/schemas/CabinAirEnum'
+        fareBasisCode:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        fareType:
+          $ref: '#/components/schemas/FareTypeEnum'
+        carCode:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        valueCode:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        Brand:
+          $ref: '#/components/schemas/BrandID'
+        CustomerLoyaltyCredit:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerLoyaltyCredit'
+      discriminator:
+        propertyName: '@type'
+    Penalties:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        Change:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/Change'
+        Cancel:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/Cancel'
+        Waiver:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/WaiverEnum'
+        PenaltySourceCode:
+          $ref: '#/components/schemas/PenaltySourceCode'
+        PassengerTypeCodes:
+          type: array
+          description: The passenger type codes that this penalty applies to
+          items:
+            maxLength: 5
+            minLength: 3
+            pattern: ([a-zA-Z0-9]{3,5})
+            type: string
+        involuntaryInd:
+          type: boolean
+          description: Penalties apply for involuntary changes initiated by the airline
+      discriminator:
+        propertyName: '@type'
+    FareGuaranteePolicy:
+      required:
+      - '@type'
+      - EligibleforADMReview
+      properties:
+        '@type':
+          type: string
+        passengerTypeCodes:
+          type: array
+          description: 'Assigned Type: c-1100:PassengerTypeCodeList'
+          items:
+            maxLength: 5
+            minLength: 3
+            pattern: ([a-zA-Z0-9]{3,5})
+            type: string
+        EligibleforADMReview:
+          $ref: '#/components/schemas/YesNoUnknownEnum'
+        Code:
+          $ref: '#/components/schemas/Code'
+      discriminator:
+        propertyName: '@type'
+    TermsAndConditionsAir:
+      allOf:
+      - $ref: '#/components/schemas/TermsAndConditions'
+      - properties:
+          BaggageAllowance:
+            maxItems: 99
+            type: array
+            items:
+              $ref: '#/components/schemas/BaggageAllowance'
+          FareRuleIdentifierRef:
+            $ref: '#/components/schemas/IdentifierRef'
+          FareRuleInfo:
+            maxItems: 50
+            type: array
+            items:
+              $ref: '#/components/schemas/FareRuleInfo'
+          Restriction:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/Restriction'
+          OrganizationInformation:
+            $ref: '#/components/schemas/OrganizationInformation'
+          ValidatingAirline:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/ValidatingAirline'
+          BaggageRecheck:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/BaggageRecheck'
+          TicketingAgency:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/TicketingAgency'
+          PaymentTimeLimit:
+            type: string
+            description: The date and time by which the Offer must be paid for once the Reservation is completed
+            format: date-time
+          PromotionalCode:
+            $ref: '#/components/schemas/PromotionalCode'
+          Penalties:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/Penalties'
+          FareGuaranteePolicy:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/FareGuaranteePolicy'
+          instantPurchaseInd:
+            type: boolean
+            description: If true the Offer\/Offering must be paid for at the same time as creating the Reservation
+          secureFlightPassengerDataRequiredInd:
+            type: boolean
+            description: If true, Secure Flight Passenger Data must be input for all Travelers to complete the Reservation
+    FlightID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internal ID
+        FlightRef:
+          type: string
+          description: Reference to a Flight object eslewhere in the message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    FlightIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internal ID
+        FlightRef:
+          type: string
+          description: Reference to a Flight object eslewhere in the message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    ArrivalFlightID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internal ID
+        FlightRef:
+          type: string
+          description: Reference to a Flight object eslewhere in the message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    ArrivalFlightIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internal ID
+        FlightRef:
+          type: string
+          description: Reference to a Flight object eslewhere in the message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    DepartureFlightID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internal ID
+        FlightRef:
+          type: string
+          description: Reference to a Flight object eslewhere in the message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    DepartureFlightIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internal ID
+        FlightRef:
+          type: string
+          description: Reference to a Flight object eslewhere in the message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    Flight:
+      allOf:
+      - $ref: '#/components/schemas/FlightID'
+      - required:
+        - Arrival
+        - Departure
+        - carrier
+        - number
+        properties:
+          distance:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          stops:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberSingleDigit'
+            format: int32
+          duration:
+            type: string
+            description: Elapsed flight time represented in ISO 8601 format
+          carrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          number:
+            pattern: '[0-9]{1,4}[A-Z]?|OPEN|ARNK'
+            type: string
+            description: 'Assigned Type: c-1100:FlightNumber'
+          operatingCarrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          operatingCarrierName:
+            maxLength: 128
+            type: string
+            description: 'Assigned Type: c-1100:StringShort'
+          equipment:
+            pattern: ([A-Z0-9]{3})?
+            type: string
+            description: 'Assigned Type: c-1100:AirEquipCodeIATA'
+          Departure:
+            $ref: '#/components/schemas/Departure'
+          Arrival:
+            $ref: '#/components/schemas/Arrival'
+          IntermediateStop:
+            maxItems: 9
+            type: array
+            items:
+              $ref: '#/components/schemas/IntermediateStop'
+          subjectToGovernmentApprovalInd:
+            type: boolean
+            description: If true, this flight schedule is yet to receive government approval
+    FlightSummary:
+      allOf:
+      - $ref: '#/components/schemas/FlightID'
+      - required:
+        - Arrival
+        - Departure
+        - carrier
+        - number
+        properties:
+          distance:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          stops:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberSingleDigit'
+            format: int32
+          duration:
+            type: string
+            description: Elapsed flight time represented in ISO 8601 format
+          carrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          number:
+            pattern: '[0-9]{1,4}[A-Z]?|OPEN|ARNK'
+            type: string
+            description: 'Assigned Type: c-1100:FlightNumber'
+          operatingCarrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          operatingCarrierName:
+            maxLength: 128
+            type: string
+            description: 'Assigned Type: c-1100:StringShort'
+          equipment:
+            pattern: ([A-Z0-9]{3})?
+            type: string
+            description: 'Assigned Type: c-1100:AirEquipCodeIATA'
+          Departure:
+            $ref: '#/components/schemas/Departure'
+          Arrival:
+            $ref: '#/components/schemas/Arrival'
+          IntermediateStop:
+            maxItems: 9
+            type: array
+            items:
+              $ref: '#/components/schemas/IntermediateStop'
+          subjectToGovernmentApprovalInd:
+            type: boolean
+            description: If true, this flight schedule is yet to receive government approval
+    ArrivalFlight:
+      allOf:
+      - $ref: '#/components/schemas/ArrivalFlightID'
+      - required:
+        - Arrival
+        - Departure
+        - carrier
+        - number
+        properties:
+          distance:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          stops:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberSingleDigit'
+            format: int32
+          duration:
+            type: string
+            description: Elapsed flight time represented in ISO 8601 format
+          carrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          number:
+            pattern: '[0-9]{1,4}[A-Z]?|OPEN|ARNK'
+            type: string
+            description: 'Assigned Type: c-1100:FlightNumber'
+          operatingCarrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          operatingCarrierName:
+            maxLength: 128
+            type: string
+            description: 'Assigned Type: c-1100:StringShort'
+          equipment:
+            pattern: ([A-Z0-9]{3})?
+            type: string
+            description: 'Assigned Type: c-1100:AirEquipCodeIATA'
+          Departure:
+            $ref: '#/components/schemas/Departure'
+          Arrival:
+            $ref: '#/components/schemas/Arrival'
+          IntermediateStop:
+            maxItems: 9
+            type: array
+            items:
+              $ref: '#/components/schemas/IntermediateStop'
+          subjectToGovernmentApprovalInd:
+            type: boolean
+            description: If true, this flight schedule is yet to receive government approval
+    ArrivalFlightSummary:
+      allOf:
+      - $ref: '#/components/schemas/ArrivalFlightID'
+      - required:
+        - Arrival
+        - Departure
+        - carrier
+        - number
+        properties:
+          distance:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          stops:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberSingleDigit'
+            format: int32
+          duration:
+            type: string
+            description: Elapsed flight time represented in ISO 8601 format
+          carrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          number:
+            pattern: '[0-9]{1,4}[A-Z]?|OPEN|ARNK'
+            type: string
+            description: 'Assigned Type: c-1100:FlightNumber'
+          operatingCarrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          operatingCarrierName:
+            maxLength: 128
+            type: string
+            description: 'Assigned Type: c-1100:StringShort'
+          equipment:
+            pattern: ([A-Z0-9]{3})?
+            type: string
+            description: 'Assigned Type: c-1100:AirEquipCodeIATA'
+          Departure:
+            $ref: '#/components/schemas/Departure'
+          Arrival:
+            $ref: '#/components/schemas/Arrival'
+          IntermediateStop:
+            maxItems: 9
+            type: array
+            items:
+              $ref: '#/components/schemas/IntermediateStop'
+          subjectToGovernmentApprovalInd:
+            type: boolean
+            description: If true, this flight schedule is yet to receive government approval
+    DepartureFlight:
+      allOf:
+      - $ref: '#/components/schemas/DepartureFlightID'
+      - required:
+        - Arrival
+        - Departure
+        - carrier
+        - number
+        properties:
+          distance:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          stops:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberSingleDigit'
+            format: int32
+          duration:
+            type: string
+            description: Elapsed flight time represented in ISO 8601 format
+          carrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          number:
+            pattern: '[0-9]{1,4}[A-Z]?|OPEN|ARNK'
+            type: string
+            description: 'Assigned Type: c-1100:FlightNumber'
+          operatingCarrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          operatingCarrierName:
+            maxLength: 128
+            type: string
+            description: 'Assigned Type: c-1100:StringShort'
+          equipment:
+            pattern: ([A-Z0-9]{3})?
+            type: string
+            description: 'Assigned Type: c-1100:AirEquipCodeIATA'
+          Departure:
+            $ref: '#/components/schemas/Departure'
+          Arrival:
+            $ref: '#/components/schemas/Arrival'
+          IntermediateStop:
+            maxItems: 9
+            type: array
+            items:
+              $ref: '#/components/schemas/IntermediateStop'
+          subjectToGovernmentApprovalInd:
+            type: boolean
+            description: If true, this flight schedule is yet to receive government approval
+    DepartureFlightSummary:
+      allOf:
+      - $ref: '#/components/schemas/DepartureFlightID'
+      - required:
+        - Arrival
+        - Departure
+        - carrier
+        - number
+        properties:
+          distance:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          stops:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberSingleDigit'
+            format: int32
+          duration:
+            type: string
+            description: Elapsed flight time represented in ISO 8601 format
+          carrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          number:
+            pattern: '[0-9]{1,4}[A-Z]?|OPEN|ARNK'
+            type: string
+            description: 'Assigned Type: c-1100:FlightNumber'
+          operatingCarrier:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+            description: 'Assigned Type: c-1100:AirlineCode'
+          operatingCarrierName:
+            maxLength: 128
+            type: string
+            description: 'Assigned Type: c-1100:StringShort'
+          equipment:
+            pattern: ([A-Z0-9]{3})?
+            type: string
+            description: 'Assigned Type: c-1100:AirEquipCodeIATA'
+          Departure:
+            $ref: '#/components/schemas/Departure'
+          Arrival:
+            $ref: '#/components/schemas/Arrival'
+          IntermediateStop:
+            maxItems: 9
+            type: array
+            items:
+              $ref: '#/components/schemas/IntermediateStop'
+          subjectToGovernmentApprovalInd:
+            type: boolean
+            description: If true, this flight schedule is yet to receive government approval
+    FlightDetail:
+      allOf:
+      - $ref: '#/components/schemas/Flight'
+      - properties:
+          AvailabilitySourceCode:
+            $ref: '#/components/schemas/AvailabilitySourceCodeENUM'
+    ArrivalFlightDetail:
+      allOf:
+      - $ref: '#/components/schemas/ArrivalFlightID'
+      - properties:
+          AvailabilitySourceCode:
+            $ref: '#/components/schemas/AvailabilitySourceCodeENUM'
+    DepartureFlightDetail:
+      allOf:
+      - $ref: '#/components/schemas/DepartureFlightID'
+      - properties:
+          AvailabilitySourceCode:
+            $ref: '#/components/schemas/AvailabilitySourceCodeENUM'
+    TermsAndConditionsFullAir:
+      allOf:
+      - $ref: '#/components/schemas/TermsAndConditionsFull'
+      - properties:
+          BaggageAllowance:
+            maxItems: 99
+            type: array
+            items:
+              $ref: '#/components/schemas/BaggageAllowance'
+          FareRuleIdentifierRef:
+            $ref: '#/components/schemas/IdentifierRef'
+          FareRuleInfo:
+            maxItems: 50
+            type: array
+            items:
+              $ref: '#/components/schemas/FareRuleInfo'
+          Restriction:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/Restriction'
+          OrganizationInformation:
+            $ref: '#/components/schemas/OrganizationInformation'
+          ValidatingAirline:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/ValidatingAirline'
+          BaggageRecheck:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/BaggageRecheck'
+          TicketingAgency:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/TicketingAgency'
+          PaymentTimeLimit:
+            type: string
+            description: The date and time by which the Offer must be paid for once the Reservation is completed
+            format: date-time
+          PromotionalCode:
+            $ref: '#/components/schemas/PromotionalCode'
+          Penalties:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/Penalties'
+          FareGuaranteePolicy:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/FareGuaranteePolicy'
+          instantPurchaseInd:
+            type: boolean
+            description: If true the Offer\/Offering must be paid for at the same time as creating the Reservation
+          secureFlightPassengerDataRequiredInd:
+            type: boolean
+            description: If true, Secure Flight Passenger Data must be input for all Travelers to complete the Reservation
+    ProductAir:
+      allOf:
+      - $ref: '#/components/schemas/Product'
+      - required:
+        - FlightSegment
+        - PassengerFlight
+        properties:
+          totalDuration:
+            type: string
+            description: Total duration of all Segments that are part of this ProductAir
+          FlightSegment:
+            maxItems: 99
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/FlightSegment'
+          PassengerFlight:
+            maxItems: 10
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/PassengerFlight'
+    OfferQueryBuildFromCatalogOfferings:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        BuildFromCatalogOfferingsRequest:
+          $ref: '#/components/schemas/BuildFromCatalogOfferingsRequestAir'
+        CabinPreference:
+          $ref: '#/components/schemas/CabinPreference'
+        PaymentCriteria:
+          $ref: '#/components/schemas/PaymentCriteria'
+        FareRuleType:
+          $ref: '#/components/schemas/FareRuleEnum'
+        FareRuleCategory:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/FareRuleCategoryEnum'
+        lowFareFinderInd:
+          type: boolean
+          description: If present and true, this is a low fare finder request
+        returnBrandedFaresInd:
+          type: boolean
+          description: If present and true, branded fares are returned
+        reCheckInventoryInd:
+          type: boolean
+          description: If present and true, then the host system will perform a sell inventory check.
+      discriminator:
+        propertyName: '@type'
+    OfferQueryBuildFromProducts:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        BuildFromProductsRequest:
+          $ref: '#/components/schemas/BuildFromProductsRequestAir'
+        CabinPreference:
+          $ref: '#/components/schemas/CabinPreference'
+        PaymentCriteria:
+          $ref: '#/components/schemas/PaymentCriteria'
+        FareRuleType:
+          $ref: '#/components/schemas/FareRuleEnum'
+        FareRuleCategory:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/FareRuleCategoryEnum'
+        lowFareFinderInd:
+          type: boolean
+          description: If present and true, this is a low fare finder request
+        returnBrandedFaresInd:
+          type: boolean
+          description: If present and true, branded fares are returned
+        reCheckInventoryInd:
+          type: boolean
+          description: If present and true, then the host system will perform a sell inventory check.
+      discriminator:
+        propertyName: '@type'
+    PassengerFlight:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        passengerQuantity:
+          type: integer
+          description: Number of passengers of the specified passenger type code
+          format: int32
+        passengerTypeCode:
+          maxLength: 5
+          minLength: 3
+          pattern: ([a-zA-Z0-9]{3,5})
+          type: string
+          description: 'Assigned Type: c-1100:PassengerTypeCode'
+        FlightProduct:
+          maxItems: 99
+          type: array
+          items:
+            $ref: '#/components/schemas/FlightProduct'
+      discriminator:
+        propertyName: '@type'
+    FlightSegment:
+      required:
+      - '@type'
+      - Flight
+      - sequence
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        sequence:
+          type: integer
+          description: 'Assigned Type: c-1100:SegmentSequence'
+          format: int32
+        connectionDuration:
+          type: string
+          description: The actual duration (in minutes) between
+        Flight:
+          $ref: '#/components/schemas/FlightID'
+        boundFlightsInd:
+          type: boolean
+          description: If present and true, the Segments in this Connection must be sold and cancelled together.
+      discriminator:
+        propertyName: '@type'
+    CabinAirEnum:
+      type: string
+      description: Specifies the cabin type (e.g. first, business, economy).
+      enum:
+      - PremiumFirst
+      - First
+      - Business
+      - PremiumEconomy
+      - Economy
+    CabinPreferenceTypeEnum:
+      type: string
+      enum:
+      - Preferred
+      - Permitted
+      - PreferredWithUpgrade
+    CarrierPreferenceTypeEnum:
+      type: string
+      enum:
+      - Preferred
+      - Permitted
+      - Prohibited
+    ConnectionTypeEnum:
+      type: string
+      enum:
+      - NonStopDirect
+      - StopDirect
+      - SingleConnection
+      - DoubleConnection
+      - TripleConnection
+    BaggageAllowance:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        passengerTypeCodes:
+          type: array
+          description: 'Assigned Type: c-1100:PassengerTypeCodeList'
+          items:
+            maxLength: 5
+            minLength: 3
+            pattern: ([a-zA-Z0-9]{3,5})
+            type: string
+        baggageType:
+          $ref: '#/components/schemas/BaggageTypeEnum'
+        ProductRef:
+          type: array
+          description: A product is any product, service or package of products and services  that can be priced and purchased by a specific supplier.
+          items:
+            type: string
+        BaggageItem:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/BaggageItem'
+        SegmentSequenceList:
+          type: array
+          description: Segment sequence is only to be used when the baggage allowance differs between segments within a product. If so, then the ProducRef must be specified.
+          items:
+            type: integer
+            format: int32
+        Text:
+          maxItems: 35
+          type: array
+          items:
+            maxLength: 128
+            type: string
+      discriminator:
+        propertyName: '@type'
+    BaggageAllowanceSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        passengerTypeCodes:
+          type: array
+          description: 'Assigned Type: c-1100:PassengerTypeCodeList'
+          items:
+            maxLength: 5
+            minLength: 3
+            pattern: ([a-zA-Z0-9]{3,5})
+            type: string
+        baggageType:
+          $ref: '#/components/schemas/BaggageTypeEnum'
+        ProductRef:
+          type: array
+          description: A product is any product, service or package of products and services  that can be priced and purchased by a specific supplier.
+          items:
+            type: string
+        BaggageItem:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/BaggageItem'
+        SegmentSequenceList:
+          type: array
+          description: Segment sequence is only to be used when the baggage allowance differs between segments within a product. If so, then the ProducRef must be specified.
+          items:
+            type: integer
+            format: int32
+        Text:
+          maxItems: 35
+          type: array
+          items:
+            maxLength: 128
+            type: string
+      discriminator:
+        propertyName: '@type'
+    BaggageAllowanceDetail:
+      allOf:
+      - $ref: '#/components/schemas/BaggageAllowance'
+      - properties:
+          url:
+            type: string
+            description: Url for the airline's baggage information web site
+    BaggageTypeEnum:
+      type: string
+      enum:
+      - CarryOn
+      - FirstCheckedBag
+      - SecondCheckedBag
+      - AdditionalBags
+      - BaggageEmbargo
+    ExcludeGroundTypeEnum:
+      type: string
+      enum:
+      - Train
+      - All
+    TravelerGeographicTypeEnum:
+      type: string
+      enum:
+      - Country
+      - StateProvince
+      - City
+    PricingModifiersAir:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        currencyCode:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+          description: 'Assigned Type: c-1100:CurrencyCodeISO'
+        FareSelection:
+          $ref: '#/components/schemas/FareSelection'
+        OrganizationInformation:
+          $ref: '#/components/schemas/OrganizationInformation'
+        TaxExemption:
+          $ref: '#/components/schemas/TaxExemption'
+        PromotionalCode:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionalCode'
+        SellCity:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: Overrides the sell city of the requestor.
+        TicketCity:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: Overrides the ticket city of the requestor.
+        includeSplitPaymentInd:
+          type: boolean
+          description: If true, split payment (split ticket) offerings\/offers will be returned
+      discriminator:
+        propertyName: '@type'
+    PricingModifiersAirSummary:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        currencyCode:
+          pattern: '[a-zA-Z]{3}'
+          type: string
+          description: 'Assigned Type: c-1100:CurrencyCodeISO'
+        FareSelection:
+          $ref: '#/components/schemas/FareSelection'
+        OrganizationInformation:
+          $ref: '#/components/schemas/OrganizationInformation'
+        TaxExemption:
+          $ref: '#/components/schemas/TaxExemption'
+        PromotionalCode:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionalCode'
+        SellCity:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: Overrides the sell city of the requestor.
+        TicketCity:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: Overrides the ticket city of the requestor.
+        includeSplitPaymentInd:
+          type: boolean
+          description: If true, split payment (split ticket) offerings\/offers will be returned
+      discriminator:
+        propertyName: '@type'
+    PricingModifiersAirDetail:
+      allOf:
+      - $ref: '#/components/schemas/PricingModifiersAir'
+      - properties:
+          Brand:
+            $ref: '#/components/schemas/BrandID'
+    CabinPreference:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        preferenceType:
+          $ref: '#/components/schemas/CabinPreferenceTypeEnum'
+        cabins:
+          type: array
+          items:
+            $ref: '#/components/schemas/CabinAirEnum'
+        legSequence:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+      discriminator:
+        propertyName: '@type'
+    CarrierPreference:
+      required:
+      - '@type'
+      - carriers
+      - preferenceType
+      properties:
+        '@type':
+          type: string
+        preferenceType:
+          $ref: '#/components/schemas/CarrierPreferenceTypeEnum'
+        carriers:
+          type: array
+          description: 'Assigned Type: c-1100:AirlineCodes'
+          items:
+            pattern: ([a-zA-Z0-9]{2,3})
+            type: string
+        legSequence:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+      discriminator:
+        propertyName: '@type'
+    FlightType:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        connectionType:
+          $ref: '#/components/schemas/ConnectionTypeEnum'
+        excludeInterlineConnectionsInd:
+          type: boolean
+          description: If present and true, exclude interline connections
+      discriminator:
+        propertyName: '@type'
+    TravelerGeographicLocation:
+      properties:
+        value:
+          maxLength: 32
+          type: string
+        travelerGeographicLocationType:
+          $ref: '#/components/schemas/TravelerGeographicTypeEnum'
+      description: A counrty, provence\/state or city code
+    ProductCriteriaAir:
+      required:
+      - '@type'
+      - SpecificFlightCriteria
+      - sequence
+      properties:
+        '@type':
+          type: string
+        sequence:
+          minimum: 0
+          exclusiveMinimum: false
+          type: integer
+          description: 'Assigned Type: c-1100:NonnegativeInteger'
+          format: int32
+        SpecificFlightCriteria:
+          maxItems: 20
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/SpecificFlightCriteria'
+      discriminator:
+        propertyName: '@type'
+    BaggageItem:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        quantity:
+          type: integer
+          description: 'Assigned Type: c-1100:NumberSingleDigit'
+          format: int32
+        Measurement:
+          maxItems: 6
+          type: array
+          items:
+            $ref: '#/components/schemas/Measurement'
+        BaggageFee:
+          $ref: '#/components/schemas/CurrencyAmount'
+        Text:
+          maxLength: 128
+          type: string
+          description: Text returned from the shop response
+      discriminator:
+        propertyName: '@type'
+    TextFareRule:
+      properties:
+        value:
+          maxLength: 4096
+          type: string
+        name:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+      description: Text describing this fare rule
+    PenaltyTypeEnum:
+      type: string
+      enum:
+      - BeforeDeparture
+      - AfterDeparture
+      - Anytime
+      - NoShow
+      - Minimum
+      - Maximum
+      - ExchangeRequired
+      - ExchangeNotRequired
+    WaiverEnum:
+      type: string
+      description: Type of Waiver like Death of Pessanger,illness Of Passenger, Death of Immediate Family Member  etc
+      enum:
+      - DeathOfPassenger
+      - IllnessOfPassenger
+      - DeathOfImmediateFamilyMember
+      - IllnessOfImmediateFamilyMember
+      - TicketUpgrade
+      - ScheduleChange
+    PenaltyAppliesToEnum:
+      type: string
+      description: Penalty applicable list
+      enum:
+      - OneWay
+      - RoundTrip
+      - PerTicket
+      - PerCoupon
+      - PerDirectionOfTravel
+    WaiverCode:
+      properties:
+        value:
+          maxLength: 128
+          type: string
+        reasonCode:
+          type: integer
+          description: A code assigned to identify the reason for disruption
+          format: int32
+    TaxExemption:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        countries:
+          type: array
+          description: 'Assigned Type: c-1100:CountryCodesISO'
+          items:
+            pattern: '[a-zA-Z]{2}'
+            type: string
+        taxCodes:
+          type: array
+          description: 'Assigned Type: c-1100:TinyStrings'
+          items:
+            maxLength: 32
+            type: string
+        allTaxesExemptInd:
+          type: boolean
+          description: If true, the Offer\/Offering is exempt from all taxes
+      discriminator:
+        propertyName: '@type'
+    ValidatingAirline:
+      required:
+      - '@type'
+      - ValidatingAirline
+      properties:
+        '@type':
+          type: string
+        SegmentSequenceList:
+          type: array
+          description: The segmentSequenceList the validatingCarrier applies to
+          items:
+            type: integer
+            format: int32
+        ValidatingAirline:
+          pattern: ([a-zA-Z0-9]{2,3})
+          type: string
+          description: Represents the airline responsible for ticketing\/fulfillment of this Offer
+        ProductRef:
+          type: array
+          description: The productRef the validatingCarrier applies to
+          items:
+            type: string
+      discriminator:
+        propertyName: '@type'
+    BaggageRecheck:
+      required:
+      - '@type'
+      - ArrivalFlight
+      - At
+      - DepartureFlight
+      properties:
+        '@type':
+          type: string
+        At:
+          maxLength: 3
+          minLength: 3
+          pattern: ([a-zA-Z]{3})
+          type: string
+          description: The city where the baggage recheck is required
+        ArrivalFlight:
+          $ref: '#/components/schemas/ArrivalFlightID'
+        DepartureFlight:
+          $ref: '#/components/schemas/DepartureFlightID'
+      discriminator:
+        propertyName: '@type'
+    Restriction:
+      properties:
+        value:
+          maxLength: 128
+          type: string
+        segmentSequenceList:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+        productRef:
+          type: array
+          description: The productRef which the restriction applies to
+          items:
+            type: string
+      description: Restriction
+    AvailabilitySourceCodeENUM:
+      type: string
+      description: A code representing the source of the flight availability
+      enum:
+      - A
+      - B
+      - C
+      - D
+      - E
+      - F
+      - G
+      - H
+      - I
+      - J
+      - K
+      - L
+      - M
+      - "N"
+      - O
+      - P
+      - Q
+      - S
+      - T
+      - U
+      - X
+      - "Y"
+      - Z
+    TicketingAgency:
+      required:
+      - '@type'
+      - Code
+      properties:
+        '@type':
+          type: string
+        Code:
+          maxLength: 10
+          minLength: 2
+          pattern: ([a-zA-Z0-9]{2,10})
+          type: string
+          description: The code of the ticketing agency
+        ProductRef:
+          type: array
+          description: The Product Ref the TicketingAgency applies to
+          items:
+            type: string
+        SegmentSequenceList:
+          type: array
+          description: The segmentSequenceList the TicketingAgency applies to
+          items:
+            type: integer
+            format: int32
+      discriminator:
+        propertyName: '@type'
+    JourneyTypeEnum:
+      type: string
+      enum:
+      - OpenJaw
+      - RoundTrip
+      - CircleTrip
+      - Outbound
+      - Inbound
+    StopoverCharge:
+      required:
+      - '@type'
+      - Amount
+      - id
+      - quantity
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: The ID of the stopoverCharge
+        quantity:
+          type: integer
+          description: The quantity of stopovers permitted at this charge
+          format: int32
+        Amount:
+          $ref: '#/components/schemas/CurrencyAmount'
+        AlternativeAmount:
+          $ref: '#/components/schemas/CurrencyAmount'
+      discriminator:
+        propertyName: '@type'
+    GeographicRestrictionTypeEnum:
+      type: string
+      enum:
+      - Area
+      - Airport
+      - City
+      - Country
+      - StateProvince
+      - Zone
+    StopoverRestriction:
+      required:
+      - '@type'
+      - stopoverChargeRef
+      properties:
+        '@type':
+          type: string
+        stopoverChargeRef:
+          type: string
+          description: Reference to the Stopover Charge
+        journeyTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/JourneyTypeEnum'
+        departureCarrier:
+          pattern: ([a-zA-Z0-9]{2,3})
+          type: string
+          description: 'Assigned Type: c-1100:AirlineCode'
+        arrivalAirline:
+          pattern: ([a-zA-Z0-9]{2,3})
+          type: string
+          description: 'Assigned Type: c-1100:AirlineCode'
+        GeographicRestriction:
+          maxItems: 5
+          type: array
+          items:
+            $ref: '#/components/schemas/GeographicRestriction'
+        onlineStopoverOnlyInd:
+          type: boolean
+          description: If true, the stopover may only take place when the arriving and departing airline are the same
+      discriminator:
+        propertyName: '@type'
+    GeographicRestriction:
+      required:
+      - geographicRestrictionType
+      properties:
+        value:
+          maxLength: 32
+          type: string
+        geographicRestrictionType:
+          $ref: '#/components/schemas/GeographicRestrictionTypeEnum'
+    DayOfWeekDuration:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TimeOfDay:
+          type: string
+          description: The time of day indicates the earliest time the Offer can be reserved. Used in conjunction with DayOfWeek or Duration
+      discriminator:
+        propertyName: '@type'
+    FirstReservation:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TimeOfDay:
+          type: string
+          description: The time of day indicates the earliest time the Offer can be reserved. Used in conjunction with DayOfWeek or Duration
+      discriminator:
+        propertyName: '@type'
+    LastReservation:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TimeOfDay:
+          type: string
+          description: The time of day indicates the earliest time the Offer can be reserved. Used in conjunction with DayOfWeek or Duration
+      discriminator:
+        propertyName: '@type'
+    PaymentAfterReservation:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TimeOfDay:
+          type: string
+          description: The time of day indicates the earliest time the Offer can be reserved. Used in conjunction with DayOfWeek or Duration
+      discriminator:
+        propertyName: '@type'
+    PaymentBeforeDeparture:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        TimeOfDay:
+          type: string
+          description: The time of day indicates the earliest time the Offer can be reserved. Used in conjunction with DayOfWeek or Duration
+      discriminator:
+        propertyName: '@type'
+    DayOfWeekDurationDuration:
+      allOf:
+      - $ref: '#/components/schemas/DayOfWeekDuration'
+      - required:
+        - Duration
+        properties:
+          Duration:
+            type: string
+            description: 'The advance duration the Offer can be reserved. e.g: 40 days in advance of the first flight'
+    FirstReservationDuration:
+      allOf:
+      - $ref: '#/components/schemas/FirstReservation'
+      - required:
+        - Duration
+        properties:
+          Duration:
+            type: string
+            description: 'The advance duration the Offer can be reserved. e.g: 40 days in advance of the first flight'
+    LastReservationDuration:
+      allOf:
+      - $ref: '#/components/schemas/LastReservation'
+      - required:
+        - Duration
+        properties:
+          Duration:
+            type: string
+            description: 'The advance duration the Offer can be reserved. e.g: 40 days in advance of the first flight'
+    PaymentAfterReservationDuration:
+      allOf:
+      - $ref: '#/components/schemas/PaymentAfterReservation'
+      - required:
+        - Duration
+        properties:
+          Duration:
+            type: string
+            description: 'The advance duration the Offer can be reserved. e.g: 40 days in advance of the first flight'
+    PaymentBeforeDepartureDuration:
+      allOf:
+      - $ref: '#/components/schemas/PaymentBeforeDeparture'
+      - required:
+        - Duration
+        properties:
+          Duration:
+            type: string
+            description: 'The advance duration the Offer can be reserved. e.g: 40 days in advance of the first flight'
+    DayOfWeekDurationDayOfWeek:
+      allOf:
+      - $ref: '#/components/schemas/DayOfWeekDuration'
+      - required:
+        - DayOfWeek
+        properties:
+          DayOfWeek:
+            $ref: '#/components/schemas/DayOfWeekEnum'
+    FirstReservationDayOfWeek:
+      allOf:
+      - $ref: '#/components/schemas/FirstReservation'
+      - required:
+        - DayOfWeek
+        properties:
+          DayOfWeek:
+            $ref: '#/components/schemas/DayOfWeekEnum'
+    LastReservationDayOfWeek:
+      allOf:
+      - $ref: '#/components/schemas/LastReservation'
+      - required:
+        - DayOfWeek
+        properties:
+          DayOfWeek:
+            $ref: '#/components/schemas/DayOfWeekEnum'
+    PaymentAfterReservationDayOfWeek:
+      allOf:
+      - $ref: '#/components/schemas/PaymentAfterReservation'
+      - required:
+        - DayOfWeek
+        properties:
+          DayOfWeek:
+            $ref: '#/components/schemas/DayOfWeekEnum'
+    PaymentBeforeDepartureDayOfWeek:
+      allOf:
+      - $ref: '#/components/schemas/PaymentBeforeDeparture'
+      - required:
+        - DayOfWeek
+        properties:
+          DayOfWeek:
+            $ref: '#/components/schemas/DayOfWeekEnum'
+    ConfirmedStatusEnum:
+      properties:
+        value:
+          $ref: '#/components/schemas/ConfirmedStatusEnum_Base'
+        extension:
+          maxLength: 128
+          minLength: 1
+          type: string
+    ConfirmedStatusEnum_Base:
+      type: string
+      enum:
+      - AllFlightsMustBeConfirmed
+      - OpenReturnsNotPermitted
+      - FirstFlightMustBeConfirmed
+      - OpenReturnsArePermitted
+      - Other_
+    WaitlistStandbyConditionEnum:
+      properties:
+        value:
+          $ref: '#/components/schemas/WaitlistStandbyConditionEnum_Base'
+        extension:
+          maxLength: 128
+          minLength: 1
+          type: string
+    WaitlistStandbyConditionEnum_Base:
+      type: string
+      enum:
+      - WaitlistStandbyNotPermitted
+      - WaitlistNotPermitted
+      - WaitlistStandbyNotPermittedOrigin
+      - StandbyNotPermittedOrigin
+      - WaitlistNotPermittedOrigin
+      - WaitlistNotPermittedOnAny
+      - StandbyPermittedEarlierLaterSameDayElseWaitlistStandbyNotPermitted
+      - StandbyPermittedEarlierLaterSameDayElseStandbyNotPermitted
+      - StandbyPermittedEarlierLaterSameDayElseWaitlistStandbyNotPermittedOrigin
+      - WaitlistPermittedEarlierLaterSameDayElseWaitlistStandbyNotPermittedOrigin
+      - StandbyPermittedSameDateOriginallyTicketedProvidedFlightTimeSpecificRulesMet
+      - StandbyNotPermitted
+      - Other_
+    StructuredFareRules:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        passengerTypeCodes:
+          type: array
+          description: 'Assigned Type: c-1100:PassengerTypeCodeList'
+          items:
+            maxLength: 5
+            minLength: 3
+            pattern: ([a-zA-Z0-9]{3,5})
+            type: string
+        Penalties:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/Penalties'
+        MinimumStay:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/MinimumStay'
+        MaximumStay:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/MaximumStay'
+        AdvanceReservation:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/AdvanceReservation'
+        AdvancePayment:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/AdvancePayment'
+        Stopover:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/Stopover'
+      discriminator:
+        propertyName: '@type'
+    AdvancePayment:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+      discriminator:
+        propertyName: '@type'
+    AdvancePaymentIndeterminate:
+      allOf:
+      - $ref: '#/components/schemas/AdvancePayment'
+      - properties:
+          IndeterminateInd:
+            type: boolean
+            description: If true the advance Payment restrictions could not be determined
+    AdvancePaymentRequired:
+      allOf:
+      - $ref: '#/components/schemas/AdvancePayment'
+      - required:
+        - PaymentAfterReservation
+        - PaymentBeforeDeparture
+        properties:
+          waverDate:
+            pattern: (\d{4}-\d{2}-\d{2})
+            type: string
+            description: 'Assigned Type: ota2:LocalDate'
+          PaymentAfterReservation:
+            $ref: '#/components/schemas/PaymentAfterReservation'
+          PaymentBeforeDeparture:
+            $ref: '#/components/schemas/PaymentBeforeDeparture'
+          PaymentTravelSegmentIndicatorATPCO:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: The ATPCO paymentgeographic indicator. Example \"55\" = 1st segment over the water between area 2 and 3
+            format: int32
+          instantPaymentInd:
+            type: boolean
+            description: if true, the Offer must be paid at the same time as the reservation is created
+          ealierAppliesInd:
+            type: boolean
+            description: If true, the earlier of the payment restrictions apply
+          laterAppliesInd:
+            type: boolean
+            description: If true, the later of the payment restrictions apply
+    MinimumStay:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+      discriminator:
+        propertyName: '@type'
+    MinimumStayApplies:
+      allOf:
+      - $ref: '#/components/schemas/MinimumStay'
+      - required:
+        - Duration
+        properties:
+          mustIncludeDayOfWeek:
+            $ref: '#/components/schemas/DayOfWeekEnum'
+          originDayOfWeek:
+            $ref: '#/components/schemas/DayOfWeekEnum'
+          returnTime:
+            pattern: (([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)((:?)[0-5]\d)?([\.,]\d+(?!:))?
+            type: string
+            description: 'Assigned Type: ota2:LocalTime'
+          Duration:
+            type: string
+            description: Minimum duration
+    MinimumStayIndeterminate:
+      allOf:
+      - $ref: '#/components/schemas/MinimumStay'
+      - properties:
+          IndeterminateInd:
+            type: boolean
+            description: Structured fare rules could not be determined for this category
+    MaximumStay:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+      discriminator:
+        propertyName: '@type'
+    MaximumStayApplies:
+      allOf:
+      - $ref: '#/components/schemas/MaximumStay'
+      - properties:
+          maximumStayDuration:
+            type: string
+          maximumStayDate:
+            type: string
+            format: date
+          returnTime:
+            pattern: (([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)((:?)[0-5]\d)?([\.,]\d+(?!:))?
+            type: string
+            description: 'Assigned Type: ota2:LocalTime'
+          mustCommenceByInd:
+            type: boolean
+            description: Indicates if travel must commence by this date\/duration
+          mustCompleteByInd:
+            type: boolean
+            description: Indicates if travel must complete by this date\/duration
+          fromDateOfIssueInd:
+            type: boolean
+            description: If true the Maximum stay is calculated from the date of ticket issuance
+          earliestAppliesInd:
+            type: boolean
+            description: If true, the earlier of the Maximum stay conditions apply
+          latestAppliesInd:
+            type: boolean
+            description: If true, the later of the Maximum stay conditions apply
+    MaximumStayIndeterminate:
+      allOf:
+      - $ref: '#/components/schemas/MaximumStay'
+      - properties:
+          IndeterminateInd:
+            type: boolean
+            description: Structured fare rules could not be determined for this category
+    Stopover:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+      discriminator:
+        propertyName: '@type'
+    StopoverIndeterminate:
+      allOf:
+      - $ref: '#/components/schemas/Stopover'
+      - properties:
+          IndeterminatedInd:
+            type: boolean
+            description: If true the stopover restrictions could not be determined
+    StopoverNotPermitted:
+      allOf:
+      - $ref: '#/components/schemas/Stopover'
+      - properties:
+          NotPermittedInd:
+            type: boolean
+            description: if true, stopovers are not permitted
+    StopoverPermitted:
+      allOf:
+      - $ref: '#/components/schemas/Stopover'
+      - required:
+        - StopoverCharge
+        - maximum
+        - maximumDuration
+        - minimum
+        - minimumDuration
+        properties:
+          journeyTypes:
+            type: array
+            items:
+              $ref: '#/components/schemas/JourneyTypeEnum'
+          minimumDuration:
+            type: string
+            description: The minimum amount of time permitted for a stopover
+          maximumDuration:
+            type: string
+            description: The maximum amount of time permitted for a stopover
+          minimum:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          maximum:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          outbound:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          inbound:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: 'Assigned Type: c-1100:NonnegativeInteger'
+            format: int32
+          StopoverCharge:
+            maxItems: 10
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/StopoverCharge'
+          StopoverRestriction:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/StopoverRestriction'
+          permittedAtGatewayOnlyInd:
+            type: boolean
+            description: If true, stopovers are permitted at gateway points only
+    AdvanceReservation:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+      discriminator:
+        propertyName: '@type'
+    AdvanceReservationIndeterminate:
+      allOf:
+      - $ref: '#/components/schemas/AdvanceReservation'
+      - properties:
+          IndeterminateInd:
+            type: boolean
+            description: If true the advance Reservation restrictions could not be determined
+    AdvanceReservationRequired:
+      allOf:
+      - $ref: '#/components/schemas/AdvanceReservation'
+      - required:
+        - FirstReservation
+        - LastReservation
+        - instantPurchase
+        - standby
+        properties:
+          instantPurchase:
+            $ref: '#/components/schemas/YesNoUnknownEnum'
+          standby:
+            $ref: '#/components/schemas/YesNoUnknownEnum'
+          waiverDate:
+            pattern: (\d{4}-\d{2}-\d{2})
+            type: string
+            description: 'Assigned Type: ota2:LocalDate'
+          ReservationTravelSegmentIndicatorATPCO:
+            minimum: 0
+            exclusiveMinimum: false
+            type: integer
+            description: The ATPCO travel segment geographic indicator. Example \"55\" = 1st segment over the water
+            format: int32
+          ConfirmedStatus:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/ConfirmedStatusEnum'
+          WaitlistStandbyCondition:
+            maxItems: 10
+            type: array
+            items:
+              $ref: '#/components/schemas/WaitlistStandbyConditionEnum'
+          FirstReservation:
+            $ref: '#/components/schemas/FirstReservation'
+          LastReservation:
+            $ref: '#/components/schemas/LastReservation'
+    OrganizationInformation:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        OrganizationIdentifier:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationIdentifier'
+        GSTRegistrationNumber:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/GSTRegistrationNumber'
+      discriminator:
+        propertyName: '@type'
+    PassengerCriteria:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        number:
+          minimum: 0
+          exclusiveMinimum: false
+          type: integer
+          description: 'Assigned Type: c-1100:NonnegativeInteger'
+          format: int32
+        age:
+          type: integer
+          description: 'Assigned Type: c-1100:NumberDoubleDigit'
+          format: int32
+        passengerTypeCode:
+          maxLength: 5
+          minLength: 3
+          pattern: ([a-zA-Z0-9]{3,5})
+          type: string
+          description: 'Assigned Type: c-1100:PassengerTypeCode'
+        CustomerLoyalty:
+          maxItems: 100
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerLoyalty'
+        TravelerGeographicLocation:
+          $ref: '#/components/schemas/TravelerGeographicLocation'
+        specifiedPassengerTypeCodeOnlyInd:
+          type: boolean
+          description: If true then the Offering\/Offer will only be returned for the specific passengerTypeCode
+      discriminator:
+        propertyName: '@type'
+    PenaltySourceCode:
+      properties:
+        value:
+          maxLength: 32
+          type: string
+        codeContext:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+    ConnectionPreferencesAir:
+      allOf:
+      - $ref: '#/components/schemas/ConnectionPreferences'
+      - properties:
+          FlightType:
+            $ref: '#/components/schemas/FlightType'
+    FareRuleInfo:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        flightsRefs:
+          type: array
+          description: The flight refs associated to this fare rule info
+          items:
+            type: string
+        ruleNumber:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+        tariffNumber:
+          maxLength: 32
+          type: string
+          description: 'Assigned Type: c-1100:StringTiny'
+      discriminator:
+        propertyName: '@type'
+    FareRuleInfoStructured:
+      allOf:
+      - $ref: '#/components/schemas/FareRuleInfo'
+      - required:
+        - StructuredFareRules
+        properties:
+          StructuredFareRules:
+            maxItems: 10
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/StructuredFareRules'
+    FareRuleInfoText:
+      allOf:
+      - $ref: '#/components/schemas/FareRuleInfo'
+      - required:
+        - TextFareRule
+        properties:
+          TextFareRule:
+            maxItems: 100
+            minItems: 1
+            type: array
+            items:
+              $ref: '#/components/schemas/TextFareRule'
+    BrandID:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        BrandRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    BrandIdentifier:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Local indentifier within a given message for this object.
+        BrandRef:
+          type: string
+          description: Used to reference another instance of this object in the same message
+        Identifier:
+          $ref: '#/components/schemas/Identifier'
+      discriminator:
+        propertyName: '@type'
+    Brand:
+      allOf:
+      - $ref: '#/components/schemas/BrandID'
+      - required:
+        - name
+        properties:
+          name:
+            maxLength: 128
+            type: string
+            description: 'Assigned Type: ctbr-1100:BrandName'
+          tier:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberSingleDigit'
+            format: int32
+          shelfNumbers:
+            type: array
+            description: 'Assigned Type: ctbr-1100:ShelfNumbers'
+            items:
+              type: integer
+              format: int32
+          BrandAttribute:
+            maxItems: 100
+            type: array
+            items:
+              $ref: '#/components/schemas/BrandAttribute'
+          AdditionalBrandAttribute:
+            maxItems: 15
+            type: array
+            items:
+              $ref: '#/components/schemas/AdditionalBrandAttribute'
+          ImageURL:
+            maxItems: 10
+            type: array
+            items:
+              type: string
+    BrandSummary:
+      allOf:
+      - $ref: '#/components/schemas/BrandID'
+      - required:
+        - name
+        properties:
+          name:
+            maxLength: 128
+            type: string
+            description: 'Assigned Type: ctbr-1100:BrandName'
+          tier:
+            type: integer
+            description: 'Assigned Type: c-1100:NumberSingleDigit'
+            format: int32
+          shelfNumbers:
+            type: array
+            description: 'Assigned Type: ctbr-1100:ShelfNumbers'
+            items:
+              type: integer
+              format: int32
+          BrandAttribute:
+            maxItems: 100
+            type: array
+            items:
+              $ref: '#/components/schemas/BrandAttribute'
+          AdditionalBrandAttribute:
+            maxItems: 15
+            type: array
+            items:
+              $ref: '#/components/schemas/AdditionalBrandAttribute'
+          ImageURL:
+            maxItems: 10
+            type: array
+            items:
+              type: string
+    BrandAttribute:
+      required:
+      - '@type'
+      - classification
+      - inclusion
+      properties:
+        '@type':
+          type: string
+        classification:
+          $ref: '#/components/schemas/BrandClassificationEnum'
+        inclusion:
+          $ref: '#/components/schemas/BrandInclusionEnum'
+        ImageURL:
+          maxItems: 10
+          type: array
+          items:
+            type: string
+        matchedAttributeInd:
+          type: boolean
+          description: if true, this is a matched attribute.
+      discriminator:
+        propertyName: '@type'
+    AdditionalBrandAttribute:
+      required:
+      - '@type'
+      - Classification
+      - Inclusion
+      properties:
+        '@type':
+          type: string
+        Classification:
+          maxLength: 512
+          type: string
+          description: The Travelport classification used for categories of ancillaries
+        Inclusion:
+          $ref: '#/components/schemas/BrandInclusionEnum'
+        ImageURL:
+          maxItems: 10
+          type: array
+          items:
+            type: string
+        matchedAttributeInd:
+          type: boolean
+          description: If true, this is a matched attribute
+      discriminator:
+        propertyName: '@type'
+    BrandStatusEnum:
+      type: string
+      enum:
+      - NotOffered
+      - SoldOut
+    BrandAttributeInclusion:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        legSequence:
+          type: array
+          description: 'Assigned Type: c-1100:SegmentSequenceList'
+          items:
+            type: integer
+            format: int32
+        Classification:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/BrandClassificationEnum'
+        AdditionalClassification:
+          maxItems: 10
+          type: array
+          items:
+            maxLength: 512
+            type: string
+      discriminator:
+        propertyName: '@type'
+    AncillaryBrandText:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internally referenced id
+        target:
+          $ref: '#/components/schemas/BrandTargetEnum'
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    AncillaryBrandTextSummary:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internally referenced id
+        target:
+          $ref: '#/components/schemas/BrandTargetEnum'
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    AttributeText:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internally referenced id
+        target:
+          $ref: '#/components/schemas/BrandTargetEnum'
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    AttributeTextSummary:
+      required:
+      - '@type'
+      - TextFormatted
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Internally referenced id
+        target:
+          $ref: '#/components/schemas/BrandTargetEnum'
+        TextFormatted:
+          maxItems: 50
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextFormatted'
+      discriminator:
+        propertyName: '@type'
+    AncillaryBrandTextDetail:
+      allOf:
+      - $ref: '#/components/schemas/AncillaryBrandText'
+      - required:
+        - DateCreateModify
+        properties:
+          sequence:
+            type: integer
+            description: The order of the text block, if there are more than one block.
+            format: int32
+          description:
+            maxLength: 1024
+            type: string
+            description: 'Assigned Type: c-1100:Description'
+          Image:
+            $ref: '#/components/schemas/Image'
+          URL:
+            type: string
+            description: A URL for this block
+          DateCreateModify:
+            $ref: '#/components/schemas/DateCreateModify'
+    AttributeTextDetail:
+      allOf:
+      - $ref: '#/components/schemas/AttributeText'
+      - required:
+        - DateCreateModify
+        properties:
+          sequence:
+            type: integer
+            description: The order of the text block, if there are more than one block.
+            format: int32
+          description:
+            maxLength: 1024
+            type: string
+            description: 'Assigned Type: c-1100:Description'
+          Image:
+            $ref: '#/components/schemas/Image'
+          URL:
+            type: string
+            description: A URL for this block
+          DateCreateModify:
+            $ref: '#/components/schemas/DateCreateModify'
+    BrandInclusionEnum:
+      type: string
+      description: The indicator as to hoe the brand and the product are associated.
+      enum:
+      - Included
+      - Chargeable
+      - Not Offered
+    BrandTargetEnum:
+      type: string
+      description: The audience targeted for the brand information
+      enum:
+      - Strapline
+      - MarketingAgent
+      - MarketingConsumer
+      - External
+      - Short
+      - Agent
+      - Consumer
+      - Upsell
+    BrandClassificationEnum:
+      type: string
+      description: The Travelport classification used for a category of ancillaries such as Seat, Bags, etc. This is an initial list that will be added to.
+      enum:
+      - CheckedBag
+      - CarryOn
+      - PersonalItem
+      - Rebooking
+      - Refund
+      - SeatAssignment
+      - PremiumSeat
+      - LieFlatSeat
+      - Meals
+      - WiFi
+      - Other
+    PriceBreakdown:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        Amount:
+          $ref: '#/components/schemas/Amount'
+        Commission:
+          $ref: '#/components/schemas/Commission'
+      discriminator:
+        propertyName: '@type'
+    AmountPercent:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        application:
+          $ref: '#/components/schemas/CommissionEnum'
+      discriminator:
+        propertyName: '@type'
+    RefundedCommission:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        application:
+          $ref: '#/components/schemas/CommissionEnum'
+      discriminator:
+        propertyName: '@type'
+    Penalty:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        application:
+          $ref: '#/components/schemas/CommissionEnum'
+      discriminator:
+        propertyName: '@type'
+    EarnedCommission:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        application:
+          $ref: '#/components/schemas/CommissionEnum'
+      discriminator:
+        propertyName: '@type'
+    Commission:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        application:
+          $ref: '#/components/schemas/CommissionEnum'
+      discriminator:
+        propertyName: '@type'
+    FeeAmountOrPercent:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        application:
+          $ref: '#/components/schemas/CommissionEnum'
+      discriminator:
+        propertyName: '@type'
+    Minimum:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        application:
+          $ref: '#/components/schemas/CommissionEnum'
+      discriminator:
+        propertyName: '@type'
+    Maximum:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        application:
+          $ref: '#/components/schemas/CommissionEnum'
+      discriminator:
+        propertyName: '@type'
+    AmountPercentAmount:
+      allOf:
+      - $ref: '#/components/schemas/AmountPercent'
+      - properties:
+          Amount:
+            $ref: '#/components/schemas/CurrencyAmount'
+    RefundedCommissionAmount:
+      allOf:
+      - $ref: '#/components/schemas/RefundedCommission'
+      - properties:
+          Amount:
+            $ref: '#/components/schemas/CurrencyAmount'
+    PenaltyAmount:
+      allOf:
+      - $ref: '#/components/schemas/Penalty'
+      - properties:
+          Amount:
+            $ref: '#/components/schemas/CurrencyAmount'
+    EarnedCommissionAmount:
+      allOf:
+      - $ref: '#/components/schemas/EarnedCommission'
+      - properties:
+          Amount:
+            $ref: '#/components/schemas/CurrencyAmount'
+    CommissionAmount:
+      allOf:
+      - $ref: '#/components/schemas/Commission'
+      - properties:
+          Amount:
+            $ref: '#/components/schemas/CurrencyAmount'
+    FeeAmountOrPercentAmount:
+      allOf:
+      - $ref: '#/components/schemas/FeeAmountOrPercent'
+      - properties:
+          Amount:
+            $ref: '#/components/schemas/CurrencyAmount'
+    MinimumAmount:
+      allOf:
+      - $ref: '#/components/schemas/Minimum'
+      - properties:
+          Amount:
+            $ref: '#/components/schemas/CurrencyAmount'
+    MaximumAmount:
+      allOf:
+      - $ref: '#/components/schemas/Maximum'
+      - properties:
+          Amount:
+            $ref: '#/components/schemas/CurrencyAmount'
+    AmountPercentPercent:
+      allOf:
+      - $ref: '#/components/schemas/AmountPercent'
+      - properties:
+          Percent:
+            minimum: 0
+            exclusiveMinimum: false
+            type: number
+            description: Percent amount of commission
+            format: float
+    RefundedCommissionPercent:
+      allOf:
+      - $ref: '#/components/schemas/RefundedCommission'
+      - properties:
+          Percent:
+            minimum: 0
+            exclusiveMinimum: false
+            type: number
+            description: Percent amount of commission
+            format: float
+    PenaltyPercent:
+      allOf:
+      - $ref: '#/components/schemas/Penalty'
+      - properties:
+          Percent:
+            minimum: 0
+            exclusiveMinimum: false
+            type: number
+            description: Percent amount of commission
+            format: float
+    EarnedCommissionPercent:
+      allOf:
+      - $ref: '#/components/schemas/EarnedCommission'
+      - properties:
+          Percent:
+            minimum: 0
+            exclusiveMinimum: false
+            type: number
+            description: Percent amount of commission
+            format: float
+    CommissionPercent:
+      allOf:
+      - $ref: '#/components/schemas/Commission'
+      - properties:
+          Percent:
+            minimum: 0
+            exclusiveMinimum: false
+            type: number
+            description: Percent amount of commission
+            format: float
+    FeeAmountOrPercentPercent:
+      allOf:
+      - $ref: '#/components/schemas/FeeAmountOrPercent'
+      - properties:
+          Percent:
+            minimum: 0
+            exclusiveMinimum: false
+            type: number
+            description: Percent amount of commission
+            format: float
+    MinimumPercent:
+      allOf:
+      - $ref: '#/components/schemas/Minimum'
+      - properties:
+          Percent:
+            minimum: 0
+            exclusiveMinimum: false
+            type: number
+            description: Percent amount of commission
+            format: float
+    MaximumPercent:
+      allOf:
+      - $ref: '#/components/schemas/Maximum'
+      - properties:
+          Percent:
+            minimum: 0
+            exclusiveMinimum: false
+            type: number
+            description: Percent amount of commission
+            format: float
+    ReferenceList:
+      required:
+      - '@type'
+      properties:
+        '@type':
+          type: string
+        id:
+          type: string
+          description: Uniquely identifies for the Reference List
+      discriminator:
+        propertyName: '@type'
+    Path:
+      properties:
+        value:
+          type: string
+        objectRefs:
+          type: array
+          description: IDREFS of objects to be supplemented
+          items:
+            type: string
+    SupplementalInformation:
+      required:
+      - '@type'
+      - NameValuePair
+      - Path
+      properties:
+        '@type':
+          type: string
+        Path:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/Path'
+        NameValuePair:
+          maxItems: 10
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/NameValuePair'
+      discriminator:
+        propertyName: '@type'
+  parameters:
+    TraceId:
+      name: TraceId
+      in: header
+      description: Identifier used to correlate API invocations across long-running or multi-call business flows.
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    XAUTH_TRAVELPORT_ACCESSGROUP:
+      name: XAUTH_TRAVELPORT_ACCESSGROUP
+      in: header
+      description: Identifies the Travelport access group with which the caller is associated
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+    TravelportPlusSessionID:
+      name: TravelportPlusSessionID
+      in: header
+      description: Travelport Plus Session ID used to maintain an established agency session
+      required: false
+      style: simple
+      explode: false
+      schema:
+        type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://oauth.travelport.com/oauth/oauth20/token
+          scopes: {}
