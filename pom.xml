@@ -65,6 +65,11 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.22</version>
 		</dependency>
+		<dependency>
+			<groupId>com.travelport.air.domain.model</groupId>
+			<artifactId>air-price-domain-model</artifactId>
+			<version>11.4.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

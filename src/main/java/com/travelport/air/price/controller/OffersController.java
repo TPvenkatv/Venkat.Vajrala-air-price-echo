@@ -29,6 +29,7 @@ public class OffersController {
         log.info("Header TravelportPlusSessionID: " + travelportPlusSessionID);
         log.info("Header TraceId: " + traceId);
 
+        Thread.sleep(10000);
         ResponseEntity<OfferQueryBuildFromProducts> responseEntity = ResponseEntity.status(HttpStatus.OK)
                 .header("TraceId", traceId)
                 .header("XAUTH_TRAVELPORT_ACCESSGROUP", XAUTH_TRAVELPORT_ACCESSGROUP)
